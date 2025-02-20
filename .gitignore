@@ -1,0 +1,23 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Java/Gradle
+build/
+.gradle/
+*.class
+
+# Others
+.env
+*.log
+
+database/*
+!database/.gitkeep
+
+.sql/
