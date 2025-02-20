@@ -1,0 +1,265 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  padding: 2rem 1rem;
+}
+
+/* Selected Allergens Bar */
+.selectedAllergensBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1.5px solid #000;
+  margin-bottom: 1.5rem;
+  width: 92%;
+  max-width: 1000px;
+  min-height: 70px;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.selectedAllergenTag {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #000000;
+  gap: 8px;
+  border: 1.5px solid #000;
+  transition: all 0.2s ease;
+}
+
+.selectedAllergenTag:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.removeAllergenButton {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.removeAllergenButton:hover {
+  color: #ff4444;
+  transform: scale(1.1);
+}
+
+/* Modal Content */
+.modalContent {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 12px;
+  width: 92%;
+  max-width: 1000px;
+  height: calc(88vh - 100px);
+  overflow-y: auto;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #000;
+  position: relative;
+}
+
+/* Search Container */
+.searchContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1.5px solid #000;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 280px;
+  padding: 1.2rem 1.5rem;
+  border: 1.5px solid #000;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.searchInput::placeholder {
+  color: #777777;
+  font-weight: 400;
+}
+
+.resetButton {
+  padding: 1.2rem 2rem;
+  background: #ffffff;
+  color: #000000;
+  border: 1.5px solid #000;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.resetButton:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button X */
+.closeX {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #000000;
+}
+
+.closeX:hover {
+  transform: rotate(90deg) scale(1.1);
+  color: #ff4444;
+}
+
+/* Allergens List Container */
+.allergensList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Allergen Category */
+.allergenCategory {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 10px;
+  border: 1.5px solid #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.allergenCategory:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.allergenCategory h3 {
+  color: #000000;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid #000;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Allergen Items */
+.allergenItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  border: 1.5px solid #e0e0e0;
+}
+
+.allergenItem:hover {
+  background: #f8f8f8;
+  border-color: #000;
+  transform: translateX(5px);
+}
+
+.allergenItem input[type="checkbox"] {
+  margin-right: 14px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #000000;
+}
+
+/* Modal Footer */
+.modalFooter {
+  position: fixed;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 1.5rem;
+  border-radius: 12px 12px 0 0;
+  border: 1.5px solid #000;
+  display: flex;
+  justify-content: center;
+  z-index: 1001;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.applyButton {
+  padding: 1.2rem 3rem;
+  background: #000000;
+  color: white;
+  border: 1.5px solid #000;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  min-width: 200px;
+}
+
+.applyButton:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.applyButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

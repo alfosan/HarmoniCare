@@ -1,0 +1,168 @@
+    .sect {
+        padding: 130px 0;
+        background-image: linear-gradient(to bottom, 
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.9) 10%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0.5) 40%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.5) 60%,
+            rgba(255, 255, 255, 0.7) 70%,
+            rgba(255, 255, 255, 0.9) 90%,
+            rgb(255, 255, 255, 1) 100%),
+            url('https://image.ibb.co/nNCuib/coffee_item_10.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: transparent;
+        position: relative;
+        margin-top: -100px;
+        z-index: 1;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .row_center {
+        text-align: center;
+    }
+    
+    .col_intro {
+        display: inline-block;
+        float: none;
+        max-width: 500px;
+    }
+    
+    .row_small {
+        max-width: 960px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 65px;
+    }
+
+
+
+    .coffee {
+        padding: 0 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 400px;
+        position: relative;
+    }
+    
+    .coffee_img {
+        width: 90%;
+        transition: transform 0.3s ease;
+    }
+    
+    .coffee_img:hover {
+        transform: translateY(-5px);
+    }
+    
+
+    .coffee_name {
+        color: #2d3748;
+        font-size: 30px;
+        font-weight: 600;
+        border-bottom: 2px solid #daa37f;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+
+    .coffee_descr {
+        color: #767676;
+        line-height: 1.6;
+        font-size: 16px;
+        margin-bottom: 25px;
+        flex-grow: 1;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .card_btn {
+        color: #fff;
+        padding: 12px 25px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        font-weight: 600;
+        background-color: #daa37f;
+        border-radius: 25px;
+        text-transform: uppercase;
+        border: 2px solid #daa37f;
+        transition: all 0.3s ease;
+        width: auto;
+        display: inline-block;
+    }
+
+
+    .card_btn:hover {
+        background-color: transparent;
+        color: #daa37f;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(218, 163, 127, 0.3);
+    }
+    
+    .card_btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(194, 139, 107, 0.5);
+    }
+    
+    .sect_title {
+        text-transform: uppercase;
+        color: #2d3748;
+        border-bottom: 2px solid #daa37f;
+        font-size: 30px;
+        font-weight: 700;
+        text-transform: none;
+        padding-bottom: 10px;
+    }
+
+    .sect_subtitle {
+        color: #767676;
+        line-height: 1.6;
+        font-family: 'Nunito', sans-serif;
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        color: #fff;
+        padding: 12px 25px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        font-weight: 600;
+        background-color: #daa37f;
+        border-radius: 25px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 2px solid #daa37f;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: transparent;
+        color: #daa37f;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(218, 163, 127, 0.3);
+    }
+    
+    @media screen and (max-width: 768px) {
+        .row_small {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .coffee {
+            padding: 20px;
+        }
+        
+        .coffee_img {
+            width: 60px;
+            height: 60px;
+        }
+    }

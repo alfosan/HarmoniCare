@@ -1,0 +1,54 @@
+<div class="login">
+    <div class="login__content">
+        <div class="login__header">
+            <h1 class="login__title">Bienvenido de vuelta</h1>
+        </div>
+
+        <div class="login__forms">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login__register">
+                <div class="login__box">
+                    <input 
+                        type="email" 
+                        class="login__input" 
+                        formControlName="email" 
+                        placeholder=" ">
+                    <label class="login__label">Email</label>
+                    <span class="error-message" *ngIf="getErrorMessage('email')">
+                        {{ getErrorMessage('email') }}
+                    </span>
+                </div>
+
+                <div class="login__box">
+                    <div class="password-input">
+                        <input 
+                            [type]="showPassword ? 'text' : 'password'" 
+                            class="login__input" 
+                            formControlName="password" 
+                            placeholder="Contraseña">
+                        <i 
+                            class="fas" 
+                            [class.fa-eye]="!showPassword" 
+                            [class.fa-eye-slash]="showPassword"
+                            (click)="togglePasswordVisibility()"
+                        ></i>
+                    </div>
+                    <label class="login__label"></label>
+                    <span class="error-message" *ngIf="getErrorMessage('password')">
+                        {{ getErrorMessage('password') }}
+                    </span>
+                </div>
+
+                <a routerLink="/auth/forgot-password" class="login__forgot">¿Olvidaste tu contraseña?</a>
+
+                <button type="submit" class="login__button" [disabled]="loginForm.invalid">
+                    Iniciar sesión
+                </button>
+
+                <div class="login__register-link">
+                    <span>¿No tienes cuenta? </span>
+                    <a routerLink="/auth/register" class="login__signin">Regístrate</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

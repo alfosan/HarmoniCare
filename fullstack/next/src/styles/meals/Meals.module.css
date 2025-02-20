@@ -1,0 +1,42 @@
+.mealsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .mealCard {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .mealImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .mealDetails {
+    padding: 15px;
+  }
+  
+  .mealName {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .mealDescription {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .mealCalories {
+    font-size: 14px;
+    color: #888;
+  }
