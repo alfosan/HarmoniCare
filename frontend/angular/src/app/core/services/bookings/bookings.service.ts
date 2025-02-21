@@ -10,13 +10,12 @@ export class BookingsService {
 
   constructor(private http: HttpClient) {}
 
-  getBookings(): Observable<any> {
+  getBookings(filters: any = {}): Observable<any> {
     const token = localStorage.getItem('accessToken');
-    console.log('Access Token:', token); // Log de depuración
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.get<any>(this.apiUrl, { headers });
+    return this.http.post<any>(this.apiUrl, filters, { headers });
   }
 }

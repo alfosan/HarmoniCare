@@ -16,4 +16,14 @@ export class UserPatientService {
     console.log('API URL', `${this.apiUrl}/${id_user}/`);
     return this.http.get<UserPatient>(`${this.apiUrl}/${id_user}/`);
   }
+
+  getUserPatientsByUserId(id_user: number): Observable<UserPatient[]> {
+    console.log('ID USER', id_user);
+    console.log('API URL', `${this.apiUrl}?id_user=${id_user}`);
+    return this.http.get<UserPatient[]>(`${this.apiUrl}?id_user=${id_user}`);
+  }
+
+  getAllPatients(): Observable<UserPatient[]> {
+    return this.http.get<UserPatient[]>(this.apiUrl);
+  }
 }

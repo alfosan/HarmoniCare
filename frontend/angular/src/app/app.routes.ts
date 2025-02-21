@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: 'payments',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./modules/payments/payments.module').then(m => m.PaymentsModule)  // Usando carga perezosa (lazy loading)
+    loadChildren: () => import('./modules/payments/payments.module').then(m => m.PaymentsModule)
   },
   {
     path: 'auth',
