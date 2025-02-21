@@ -1,0 +1,27 @@
+<div class="filters-container p-4 bg-white rounded-lg shadow-md mb-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div>
+      <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+      <select id="status" class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" [(ngModel)]="filters.status">
+        <option value="">All</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+    <div>
+      <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
+      <input type="date" id="date" class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" [(ngModel)]="filters.date">
+    </div>
+    <div>
+      <label for="patient" class="block text-sm font-medium text-gray-700">Patient</label>
+      <select id="patient" class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" [(ngModel)]="filters.patient">
+        <option value="">All</option>
+        <option *ngFor="let patient of patients" [value]="patient.id">{{ patient.name_patient }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="mt-4 flex justify-end">
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600" (click)="applyFilters()">Apply Filters</button>
+  </div>
+</div>
