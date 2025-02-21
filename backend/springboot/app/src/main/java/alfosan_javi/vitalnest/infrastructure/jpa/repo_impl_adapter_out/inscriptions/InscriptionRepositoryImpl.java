@@ -38,4 +38,9 @@ public class InscriptionRepositoryImpl implements InscriptionRepository {
     public List<Inscription> findByIdUser(Long idUser) {
         return jpaInscriptionRepository.findByIdUser(idUser);
     }
+
+    @Override
+    public List<Inscription> findByIdUserAndFilters(Long idUser, String status, String date) {
+        return jpaInscriptionRepository.findByIdUserAndFilters(idUser, status, date);
+    }
 }

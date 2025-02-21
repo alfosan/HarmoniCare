@@ -1,6 +1,7 @@
 package alfosan_javi.vitalnest.presentation.controllers_adapter_in.inscriptions;
 
 import alfosan_javi.vitalnest.application.dto.inscriptions.InscriptionDTO;
+import alfosan_javi.vitalnest.application.dto.inscriptions.InscriptionFilterDTO;
 import alfosan_javi.vitalnest.application.services_port_in.inscriptions.InscriptionService;
 import alfosan_javi.vitalnest.application.security.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +59,11 @@ public class InscriptionController {
         }
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<List<InscriptionDTO>> getInscriptionsByUser(@RequestHeader("Authorization") String token) {
+    @PostMapping("/user")
+    public ResponseEntity<List<InscriptionDTO>> getInscriptionsByUser(
+        @RequestHeader("Authorization") String token,
+        @RequestBody InscriptionFilterDTO filters
+    ) {
         try {
             // Eliminar el prefijo 'Bearer ' y cualquier espacio innecesario
             String cleanedToken = token.replace("Bearer ", "").trim();
@@ -72,8 +76,8 @@ public class InscriptionController {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
             }
 
-            // Llama al servicio para obtener las inscripciones del usuario
-            List<InscriptionDTO> inscriptions = inscriptionService.getInscriptionsByUserId(userId);
+            // Llama al servicio para obtener las inscripciones del usuario con filtros
+            List<InscriptionDTO> inscriptions = inscriptionService.getInscriptionsByUserIdAndFilters(userId, filters.getStatus(), filters.getDate());
             return ResponseEntity.ok(inscriptions);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
