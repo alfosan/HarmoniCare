@@ -3,6 +3,7 @@ package alfosan_javi.vitalnest.application.dto.inscriptions;
 public class InscriptionFilterDTO {
     private String status;
     private String date;
+    private Long idPatient;
 
     // Getters y setters
     public String getStatus() {
@@ -19,5 +20,13 @@ public class InscriptionFilterDTO {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Long getIdPatient() {
+        return idPatient;
+    }
+
+    public void setIdPatient(Long idPatient) {
+        this.idPatient = idPatient;
     }
 }

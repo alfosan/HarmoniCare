@@ -10,5 +10,5 @@ public interface InscriptionService {
     Optional<InscriptionDTO> getInscriptionById(Long id);
     InscriptionDTO createInscription(String token, InscriptionDTO inscriptionDTO);
     List<InscriptionDTO> getInscriptionsByUserId(Long userId);
-    List<InscriptionDTO> getInscriptionsByUserIdAndFilters(Long userId, String status, String date);
+    List<InscriptionDTO> getInscriptionsByUserIdAndFilters(Long userId, String status, String date, Long idPatient);
 }

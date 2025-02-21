@@ -75,8 +75,8 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
     @Override
-    public List<InscriptionDTO> getInscriptionsByUserIdAndFilters(Long userId, String status, String date) {
-        return inscriptionRepository.findByIdUserAndFilters(userId, status, date).stream()
+    public List<InscriptionDTO> getInscriptionsByUserIdAndFilters(Long userId, String status, String date, Long idPatient) {
+        return inscriptionRepository.findByIdUserAndFilters(userId, status, date, idPatient).stream()
                 .map(inscriptionAssembler::toModel)
                 .collect(Collectors.toList());
     }

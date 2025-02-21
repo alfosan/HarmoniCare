@@ -14,8 +14,10 @@ public interface JpaInscriptionRepository extends JpaRepository<Inscription, Lon
 
     @Query("SELECT i FROM Inscription i WHERE i.idUser = :idUser " +
            "AND (:status IS NULL OR i.state = :status) " +
-           "AND (:date IS NULL OR TO_CHAR(i.createdAt, 'YYYY-MM-DD') = :date)")
+           "AND (:date IS NULL OR TO_CHAR(i.createdAt, 'YYYY-MM-DD') = :date) " +
+           "AND (:idPatient IS NULL OR i.idPatient = :idPatient)")
     List<Inscription> findByIdUserAndFilters(@Param("idUser") Long idUser,
                                              @Param("status") String status,
-                                             @Param("date") String date);
+                                             @Param("date") String date,
+                                             @Param("idPatient") Long idPatient);
 }

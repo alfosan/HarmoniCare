@@ -77,7 +77,7 @@ public class InscriptionController {
             }
 
             // Llama al servicio para obtener las inscripciones del usuario con filtros
-            List<InscriptionDTO> inscriptions = inscriptionService.getInscriptionsByUserIdAndFilters(userId, filters.getStatus(), filters.getDate());
+            List<InscriptionDTO> inscriptions = inscriptionService.getInscriptionsByUserIdAndFilters(userId, filters.getStatus(), filters.getDate(), filters.getIdPatient());
             return ResponseEntity.ok(inscriptions);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);

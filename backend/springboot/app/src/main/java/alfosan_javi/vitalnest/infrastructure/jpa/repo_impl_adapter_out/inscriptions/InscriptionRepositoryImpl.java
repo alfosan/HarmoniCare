@@ -40,7 +40,7 @@ public class InscriptionRepositoryImpl implements InscriptionRepository {
     }
 
     @Override
-    public List<Inscription> findByIdUserAndFilters(Long idUser, String status, String date) {
-        return jpaInscriptionRepository.findByIdUserAndFilters(idUser, status, date);
+    public List<Inscription> findByIdUserAndFilters(Long idUser, String status, String date, Long idPatient) {
+        return jpaInscriptionRepository.findByIdUserAndFilters(idUser, status, date, idPatient);
     }
 }
