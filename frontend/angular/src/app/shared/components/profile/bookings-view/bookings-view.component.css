@@ -1,140 +1,206 @@
+/* Main Dashboard Styles */
 .admin-dashboard {
-    background-color: #f8f9fa;
-    padding: 20px;
-  }
-  
-  .dashboard-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .loading-state {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .error-message {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .bookings-table {
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th, .table td {
-    padding: 10px;
-    border: 1px solid #dee2e6;
-  }
-  
-  .table th {
-    background-color: #343a40;
-    color: #fff;
-  }
-  
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f8f9fa;
-  }
-  
-  .table-striped tbody tr:nth-of-type(even) {
-    background-color: #e9ecef;
-  }
-  
-  .activity-tooltip, .patient-tooltip {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .activity-info, .patient-info {
-    margin-bottom: 10px;
-  }
-  
-  .caracteristics ul, .allergies ul, .difficulties ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .caracteristics li, .allergies li, .difficulties li {
-    background-color: #e9ecef;
-    margin: 5px 0;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  .discapacity {
-    color: #dc3545;
-    font-weight: bold;
-  }
-  
-  .status-badge {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #fff;
-  }
-  
-  .status-badge.pending {
-    background-color: #ffc107;
-  }
-  
-  .status-badge.completed {
-    background-color: #28a745;
-  }
-  
-  .status-badge.cancelled {
-    background-color: #dc3545;
-  }
-  
-  .action-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .action-buttons .btn {
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .action-buttons .btn-primary {
-    background-color: #007bff;
-    border: none;
-    color: #fff;
-  }
-  
-  .action-buttons .btn-danger {
-    background-color: #dc3545;
-    border: none;
-    color: #fff;
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #dee2e6;
-    background-color: #343a40;
-    color: #fff;
-  }
-  
-  .modal-body {
-    padding: 20px;
-  }
-  
-  .modal-title {
-    margin: 0;
-  }
-  
-  .close {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #fff;
-  }
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Loading and Error States */
+.loading-state {
+  text-align: center;
+  margin: 40px 0;
+  color: #333333;
+}
+
+.error-message {
+  text-align: center;
+  margin: 40px 0;
+  color: #ff4d4d;
+}
+
+/* Table Styles */
+.bookings-table {
+  width: 100%;
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-auto {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-auto th {
+  background-color: #f5f5f5;
+  color: #333333;
+  padding: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.table-auto td {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #333333;
+}
+
+.table-auto tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.table-auto tbody tr:nth-of-type(odd) {
+  background-color: #fafafa;
+}
+
+.table-auto tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.table-auto tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Status Badge Styles */
+.status-badge {
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.status-badge.pending {
+  background-color: #ffd700;
+  color: #333333;
+}
+
+.status-badge.completed {
+  background-color: #00cc66;
+  color: #ffffff;
+}
+
+.status-badge.cancelled {
+  background-color: #ff4d4d;
+  color: #ffffff;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.action-buttons button {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.action-buttons button:hover {
+  transform: scale(1.1);
+}
+
+.action-buttons .text-blue-500 {
+  color: #4d94ff;
+}
+
+.action-buttons .text-red-500 {
+  color: #ff4d4d;
+}
+
+/* Modal Styles */
+.modal-header {
+  background-color: #f5f5f5;
+  color: #333333;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+.info-item {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.info-item p {
+  color: #333333;
+}
+
+.characteristics, .allergies, .difficulties {
+  background-color: #f5f5f5 !important;
+  border-radius: 10px;
+  padding: 20px !important;
+  margin-top: 20px;
+}
+
+.characteristics li, .allergies li, .difficulties li {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: transform 0.3s ease;
+}
+
+.characteristics li:hover, .allergies li:hover, .difficulties li:hover {
+  transform: translateX(10px);
+}
+
+/* Close Button */
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333333;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #ff4d4d;
+}
+
+/* Special Elements */
+.booking-id {
+  font-family: monospace;
+  color: #4d94ff;
+  font-weight: 600;
+}
+
+.email {
+  color: #666666;
+  font-style: italic;
+}
+
+.created-at {
+  color: #888888;
+  font-size: 0.9rem;
+}
+
+.special-request {
+  color: #666666;
+  font-style: italic;
+}
