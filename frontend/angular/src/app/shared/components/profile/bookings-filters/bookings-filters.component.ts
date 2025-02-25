@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserPatientService } from '../../../../core/services/users/user-patient-2.service';
 import { UserPatient } from '../../../../core/models/Users/user-patient.model';
 
@@ -22,10 +23,15 @@ export class BookingsFiltersComponent implements OnInit {
 
   @Output() filtersChanged = new EventEmitter<any>();
 
-  constructor(private userPatientService: UserPatientService) {}
+  constructor(
+    private userPatientService: UserPatientService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadPatients();
+    this.loadFiltersFromUrl();
   }
 
   loadPatients(): void {
@@ -46,7 +52,16 @@ export class BookingsFiltersComponent implements OnInit {
     }
   }
 
-  applyFilters() {
+  loadFiltersFromUrl(): void {
+    this.route.queryParams.subscribe(params => {
+      this.filters.status = params['status'] || '';
+      this.filters.date = params['date'] || '';
+      this.filters.patient = params['patient'] || '';
+      this.applyFilters(false); // No emitir evento al cargar desde la URL
+    });
+  }
+
+  applyFilters(emitEvent: boolean = true) {
     const filtersToSend: { status?: string; date?: string; idPatient?: string } = {};
 
     if (this.filters.status) {
@@ -61,6 +76,14 @@ export class BookingsFiltersComponent implements OnInit {
       filtersToSend['idPatient'] = this.filters.patient;
     }
 
-    this.filtersChanged.emit(filtersToSend);
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: this.filters,
+      queryParamsHandling: 'merge'
+    }).then(() => {
+      if (emitEvent) {
+        this.filtersChanged.emit(filtersToSend);
+      }
+    });
   }
 }

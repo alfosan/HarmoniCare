@@ -1,0 +1,66 @@
+/* General container styling */
+.filters-container {
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Grid layout for filters */
+.filters-container .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .filters-container .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Label styling */
+.filters-container label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+}
+
+/* Input and select styling */
+.filters-container select,
+.filters-container input[type="date"] {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.375rem;
+    background-color: #edf2f7;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-size: 0.875rem;
+    color: #2d3748;
+    transition: all 0.2s;
+}
+
+.filters-container select:focus,
+.filters-container input[type="date"]:focus {
+    outline: none;
+    border-color: #5a67d8;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
+}
+
+/* Creative styling for select elements */
+.filters-container select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%234a5568" d="M2 0L0 2h4zM2 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.5rem 0.5rem;
+    padding-right: 2rem;
+}
+
+/* Creative styling for date input */
+.filters-container input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+}
