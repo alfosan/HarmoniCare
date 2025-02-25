@@ -1,1 +1,15 @@
-<p>payments-view works!</p>
+<br><br><br><br>
+<div class="mb-8">
+    <app-profile-tabs [activeTab]="activeTab" (tabChange)="setActiveTab($event)"></app-profile-tabs>
+  </div>
+  
+  <div *ngIf="activeTab === 'payments'">
+    <h2>Mis Pagos</h2>
+    <ul>
+      <li *ngFor="let payment of payments">
+        <p>Monto: {{ payment.amount }}</p>
+        <p>Fecha: {{ payment.date | date }}</p>
+        <p>Estado: {{ payment.status }}</p>
+      </li>
+    </ul>
+  </div>

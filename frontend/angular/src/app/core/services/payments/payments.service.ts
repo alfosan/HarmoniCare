@@ -6,13 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PaymentService {
-  private apiUrl = 'http://localhost:8085/api/payments/create-payment-intent';
+  private apiUrl = 'http://localhost:8085/api/payments';
 
   constructor(private http: HttpClient) {}
 
   createPayment(amount: number): Observable<any> {
-    return this.http.post(this.apiUrl, {
-      amount,
-    });
+    return this.http.post(`${this.apiUrl}/create-payment-intent`, { amount });
+  }
+
+  getAllPayments(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user-payments`);
   }
 }
