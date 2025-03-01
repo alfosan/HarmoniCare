@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const emailRoutes = require('./routes/emailRoutes');
 require("dotenv").config();
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const apiRoutes = require("./routes/api");
 
 app.use("/api", apiRoutes);
+app.use('/email', emailRoutes);
 
 // Manejo de errores genérico
 app.use((err, req, res, next) => {
