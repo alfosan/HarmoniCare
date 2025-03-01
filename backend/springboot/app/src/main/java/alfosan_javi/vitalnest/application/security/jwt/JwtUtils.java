@@ -51,7 +51,7 @@ public class JwtUtils {
                 throw new MalformedJwtException("Token JWT no tiene un formato válido");
             }
 
-            logger.info("Token procesado correctamente: {}", token);  // Log para verificar token
+            logger.info("Token procesado correctamente: {}", token);
 
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(secretKey)
@@ -64,7 +64,7 @@ public class JwtUtils {
             }
 
             // Cambiar el tipo de conversión a Integer
-            return claims.get("id_user", Integer.class).longValue();  // Convertir de Integer a Long
+            return claims.get("id_user", Integer.class).longValue();
 
         } catch (JwtException | IllegalArgumentException e) {
             logger.error("Error al procesar el JWT: {}", e.getMessage());
@@ -81,7 +81,7 @@ public class JwtUtils {
                     .parseClaimsJws(token)
                     .getBody();
 
-            return claims.get("role", String.class);  // Extraer 'role'
+            return claims.get("role", String.class);
         } catch (Exception e) {
             logger.error("Error al obtener el rol del token: {}", e.getMessage());
             return null;
@@ -92,8 +92,8 @@ public class JwtUtils {
     public String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            String token = bearerToken.substring(7).trim();  // Eliminar el prefijo 'Bearer ' y limpiar cualquier espacio extra
-            logger.info("Token recibido (sin prefijo Bearer): [{}]", token);  // Verificación detallada del token
+            String token = bearerToken.substring(7).trim(); 
+            logger.info("Token recibido (sin prefijo Bearer): [{}]", token);  
             if (token.contains(" ")) {
                 logger.error("El token contiene espacios extra, lo cual es inválido: [{}]", token);
                 throw new RuntimeException("El token contiene espacios extra, lo cual es inválido");
@@ -108,12 +108,12 @@ public class JwtUtils {
     // Extraer el email del usuario desde el JWT
    public String getUserEmailFromToken(String token) {
         try {
-            String cleanedToken = token.replace("Bearer ", "").trim();  // Eliminar el prefijo 'Bearer ' y cualquier espacio adicional
+            String cleanedToken = token.replace("Bearer ", "").trim();
             Claims claims = Jwts.parser()
                                 .setSigningKey(secretKey)
                                 .parseClaimsJws(cleanedToken)
                                 .getBody();
-            return claims.get("email", String.class);  // Obtener el email desde los claims
+            return claims.get("email", String.class); 
         } catch (Exception e) {
             logger.error("Error al obtener el email desde el token JWT", e);
             return null;

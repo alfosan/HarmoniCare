@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface PaymentService {
     List<PaymentDTO> getAllPayments();
     Optional<PaymentDTO> getPaymentById(Long id);
+    PaymentDTO createPayment(PaymentDTO paymentDTO, Long userId, String email);
 }
