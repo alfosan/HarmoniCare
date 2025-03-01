@@ -8,6 +8,8 @@ import styles from '@/styles/inscriptions/PaymentInscriptionCard.module.css';
 import Swal from 'sweetalert2';
 import { createInscription } from '@/services/inscriptions/inscriptionService';
 import { useRouter } from 'next/navigation';
+import { createPayment } from '@/services/payments/paymentsService';
+import { getAccessToken } from '@/utils/auth';
 
 const PaymentInscriptionCard: React.FC<{ amount: number, activityId: number, patientId: number, specialRequest: string }> = ({ amount, activityId, patientId, specialRequest }) => {
   const [stripe, setStripe] = useState<Stripe | null>(null);
@@ -68,8 +70,8 @@ const PaymentInscriptionCard: React.FC<{ amount: number, activityId: number, pat
     return Math.abs(hash);
 };
 
-// Dentro de la función handlePayment
-const handlePayment = async (event: React.FormEvent) => {
+  // Dentro de la función handlePayment
+  const handlePayment = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
 
@@ -141,20 +143,31 @@ const handlePayment = async (event: React.FormEvent) => {
                             state: 'pending',
                             specialRequest: specialRequest
                         };
-                        console.log('Inscription data:', inscriptionData); // Añadido para depuración
-                        await createInscription(inscriptionData);
-                        router.push('/success');
+                        console.log('Inscription data:', inscriptionData);
+                        const inscriptionResponse = await createInscription(inscriptionData);
+
+                        // Crear el pago en el backend después de la inscripción exitosa
+                        const token = getAccessToken();
+                        if (token === null) {
+                            throw new Error('Access token is null');
+                        }
+                        const paymentData = {
+                            price: amount,
+                            idInscription: inscriptionResponse.id
+                        };
+                        await createPayment(paymentData.price, paymentData.idInscription, token);
+
+                        router.push('http://localhost:4200/profile/reservations/view?');
                     } catch (error) {
-                        console.error('Error creating inscription:', error);
+                        console.error('Error creating inscription or payment:', error);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
-                            text: 'Error al crear la inscripción',
+                            text: 'Error al crear la inscripción o el pago',
                             confirmButtonColor: '#3085d6'
                         });
                     }
-                });
-            }
+                });          }
         } else {
             Swal.fire({
                 icon: 'error',
@@ -174,7 +187,7 @@ const handlePayment = async (event: React.FormEvent) => {
     } finally {
         setIsLoading(false);
     }
-};
+  };
 
   const getCardType = () => {
     const number = cardNumber;

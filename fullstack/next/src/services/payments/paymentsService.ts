@@ -22,3 +22,22 @@ export const createPaymentIntent = async (amount: number): Promise<PaymentIntent
         throw error;
     }
 };
+
+export const createPayment = async (price: number, idInscription: number, token: string) => {
+    try {
+        const response = await axios.post(
+            'http://localhost:8085/payments',
+            { price, idInscription },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error('Error al crear el pago:', error);
+        throw error;
+    }
+};
