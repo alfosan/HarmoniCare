@@ -1,0 +1,184 @@
+  .notifications-container {
+    width: 400px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    max-height: calc(100vh - 80px);
+    z-index: 1000;
+  }
+
+  .notifications-header {
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 2;
+  }
+
+  .notifications-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  .notifications-list-wrapper {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
+
+  .notifications-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .notifications-list li {
+    transition: all 0.3s ease;
+  }
+
+  .notifications-list li:hover {
+    background-color: #f8f9fa;
+  }
+
+  .notification-card {
+    display: flex;
+    padding: 16px 20px;
+    cursor: pointer;
+    gap: 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f5fe;
+    flex-shrink: 0;
+  }
+
+  .notification-icon i {
+    font-size: 1.2rem;
+    color: #3498db;
+  }
+
+  .notification-icon i.fa-check-circle {
+    color: #2ecc71;
+  }
+
+  .notification-icon i.fa-calendar-alt {
+    color: #e67e22;
+  }
+
+  .notification-content {
+    flex: 1;
+  }
+
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .notification-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .notification-status {
+    background: #3498db;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .notification-message {
+    margin: 0 0 8px 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .notification-details {
+    font-size: 0.8rem;
+    color: #95a5a6;
+  }
+
+  .reference {
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+  .notifications-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #95a5a6;
+    text-align: center;
+  }
+
+  .notifications-empty i {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .notifications-empty p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .read {
+    opacity: 0.7;
+  }
+
+  .unread {
+    background-color: #f8f9fa;
+  }
+
+  .notifications-list-wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .notifications-list-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .notifications-list-wrapper::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+
+  .notifications-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .notifications-list li {
+    animation: fadeIn 0.3s ease-out;
+  }

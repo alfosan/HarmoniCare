@@ -1,0 +1,40 @@
+<div class="notifications-container" *ngIf="isOpen">
+    <div class="notifications-header">
+      <h2>Notificaciones</h2>
+    </div>
+    <div class="notifications-list-wrapper">
+      <ul class="notifications-list">
+        <li *ngFor="let notification of notifications" [class.read]="notification.isRead" [class.unread]="!notification.isRead">
+          <div class="notification-card" (click)="markAsRead(notification.id)">
+            <div class="notification-icon">
+              <i class="fas" [ngClass]="{
+                'fa-check-circle': notification.title.includes('Pago'),
+                'fa-calendar-alt': notification.title.includes('Actividad'),
+                'fa-bell': !notification.title.includes('Pago') && !notification.title.includes('Actividad')
+              }"></i>
+            </div>
+            <div class="notification-content">
+              <div class="notification-header">
+                <h3>{{ notification.title }}</h3>
+                <span class="notification-status" *ngIf="!notification.isRead">Nueva</span>
+                <button class="delete-button" *ngIf="notification.isRead" (click)="deleteNotification(notification.id)">✖</button>
+              </div>
+              <p class="notification-message">{{ notification.concept }}</p>
+              <div class="notification-details">
+                <span *ngIf="notification.idPayment" class="reference">
+                  Referencia de pago: #{{ notification.idPayment }}
+                </span>
+                <span *ngIf="notification.idActivity" class="reference">
+                  Referencia de actividad: #{{ notification.idActivity }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="notifications-empty" *ngIf="notifications.length === 0">
+      <i class="fas fa-bell-slash"></i>
+      <p>No tienes notificaciones nuevas</p>
+    </div>
+  </div>
