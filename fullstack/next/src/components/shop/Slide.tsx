@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import styles from "@/styles/meals/SlideMeals.module.css";
+import styles from "@/styles/shop/SlideActivities.module.css";
 import { Swiper as SwiperType } from "swiper";
 
 interface Activity {
