@@ -87,4 +87,21 @@ public class NotificationController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
     }
+
+    @PutMapping("/{id}/read")
+    public ResponseEntity<Void> markAsRead(@PathVariable Long id) {
+        try {
+            Optional<NotificationDTO> notificationOpt = notificationService.getNotificationById(id);
+            if (notificationOpt.isPresent()) {
+                NotificationDTO notification = notificationOpt.get();
+                notification.setIsRead(true);
+                notificationService.createNotification(notification);
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
 }
