@@ -32,8 +32,23 @@ public class NotificationController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<NotificationDTO> createNotification(@RequestBody NotificationDTO notificationDTO) {
+    public ResponseEntity<NotificationDTO> createNotification(@RequestHeader("Authorization") String token, @RequestBody NotificationDTO notificationDTO) {
         try {
+            // Eliminar el prefijo 'Bearer ' y cualquier espacio innecesario
+            String cleanedToken = token.replace("Bearer ", "").trim();
+
+            // Obtén el ID del usuario desde el token JWT
+            Long userId = jwtUtils.getUserIdFromJwtToken(cleanedToken);
+
+            // Si el token no tiene el ID, arroja un error
+            if (userId == null) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+            }
+
+            // Establecer el idUser en el DTO
+            notificationDTO.setIdUser(userId);
+
+            // Crear la notificación
             NotificationDTO createdNotification = notificationService.createNotification(notificationDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdNotification);
         } catch (Exception e) {
