@@ -71,6 +71,14 @@
                         </div>
                     </div>
                 </li>
+
+                <!-- 🔹 NUEVA OPCIÓN PARA NOTIFICACIONES -->
+                <li class="navItem" *ngIf="tokenService.isAuthenticated()">
+                    <div class="notifications-trigger" (click)="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <app-notifications-list [isOpen]="notificationsOpen"></app-notifications-list>
+                </li>
             </ul>
         </nav>
     </div>

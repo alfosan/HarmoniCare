@@ -5,11 +5,12 @@ import { TokenService } from '../../../../core/services/token/token.service';
 import { UserService } from '../../../../core/services/auth/user.service';
 import { SHARED_ROUTES } from '../../../../core/constants/shared.routes';
 import { User } from '../../../../core/models/Users/user.model';
+import { NotificationsListComponent } from '../../bell/notifications-list/notifications-list.component';
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [RouterModule, CommonModule],
+    imports: [RouterModule, CommonModule, NotificationsListComponent],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
@@ -17,6 +18,7 @@ export class HeaderComponent {
     menuOpen = false;
     routes = SHARED_ROUTES;
     profileMenuOpen = false;
+    notificationsOpen = false;
     user!: User;
     
     constructor(
@@ -35,8 +37,11 @@ export class HeaderComponent {
     }
 
     toggleProfileMenu() {
-        // console.log('toggleProfileMenu called', this.user);
         this.profileMenuOpen = !this.profileMenuOpen;
+    }
+
+    toggleNotifications() {
+        this.notificationsOpen = !this.notificationsOpen;
     }
 
     toggleMenu() {
