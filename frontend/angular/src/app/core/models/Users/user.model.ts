@@ -9,4 +9,5 @@ export interface User {
     phone_number: string;
     address: string;
     profile_img: string;
+    role: string;
 }

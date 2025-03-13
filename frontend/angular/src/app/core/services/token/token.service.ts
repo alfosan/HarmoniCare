@@ -3,7 +3,6 @@ import { User } from '../../models/Users/user.model';
 import { TOKEN_ROUTES } from '../../constants/token.routes';
 import { CookieService } from '../cookies/cookie.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +19,8 @@ export class TokenService {
   }
 
   getUserInfo(): User | null {
-    return this.cookieService.getCurrentUser() || localStorage.getItem(TOKEN_ROUTES.TOKEN_USER.USER_KEY);
+    const userInfo = localStorage.getItem(TOKEN_ROUTES.TOKEN_USER.USER_KEY);
+    return userInfo ? JSON.parse(userInfo) : this.cookieService.getCurrentUser();
   }
 
   clearAll(): void {
@@ -32,11 +32,11 @@ export class TokenService {
   }
 
   getAccessToken(): string | null {
-    return this.cookieService.getAccessCookie() ||localStorage.getItem(TOKEN_ROUTES.TOKEN_USER.TOKEN_KEY);
+    return localStorage.getItem(TOKEN_ROUTES.TOKEN_USER.TOKEN_KEY) || this.cookieService.getAccessCookie() || null;
   }
 
   getRefreshToken(): string | null {
-    return this.cookieService.getRefreshCookie() || localStorage.getItem(TOKEN_ROUTES.TOKEN_USER.REFRESH_TOKEN_KEY);
+    return localStorage.getItem(TOKEN_ROUTES.TOKEN_USER.REFRESH_TOKEN_KEY) ?? this.cookieService.getRefreshCookie() ?? null;
   }
 
   isAuthenticated(): boolean {
@@ -52,6 +52,4 @@ export class TokenService {
     }
     return null;
   }
-
-
 }

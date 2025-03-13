@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ErrorComponent } from './shared/components/error/error.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { adminGuard } from './core/guards/admin.guard';
 import { NotificationsListComponent } from './shared/components/bell/notifications-list/notifications-list.component';
 
 export const routes: Routes = [
@@ -27,6 +28,11 @@ export const routes: Routes = [
     path: 'notifications',
     canActivate: [AuthGuard],
     component: NotificationsListComponent
+  },
+  {
+    path: 'diets',
+    canActivate: [AuthGuard, adminGuard],
+    loadChildren: () => import('./modules/diets/diets.module').then(m => m.DietsModule)
   },
   { 
     path: '404', 

@@ -13,30 +13,30 @@ export class CookieService {
   }
 
     getCookies() {
-        const userInfo = Cookies.get('UserInfo');
-        return {
-            accessToken: Cookies.get('accessToken'),
-            refreshToken: Cookies.get('refreshToken'),
-            UserInfo: userInfo ? JSON.parse(userInfo) : null
-        };
+      const userInfo = Cookies.get('UserInfo');
+      return {
+        accessToken: Cookies.get('accessToken'),
+        refreshToken: Cookies.get('refreshToken'),
+        UserInfo: userInfo ? JSON.parse(userInfo) : null
+      };
     }
 
     getCurrentUser() {
       const user = Cookies.get('UserInfo');
-        return user ? JSON.parse(user) : null;
+      return user ? JSON.parse(user) : null;
     }
 
     getRefreshCookie() {
-        return Cookies.get('refreshToken');
+      return Cookies.get('refreshToken');
     }
 
     getAccessCookie() {
-        return Cookies.get('accessToken');
+      return Cookies.get('accessToken');
     }
 
     clearCookies(): void {
-        Cookies.remove('accessToken');
-        Cookies.remove('refreshToken');
-        Cookies.remove('UserInfo');
+      Cookies.remove('accessToken');
+      Cookies.remove('refreshToken');
+      Cookies.remove('UserInfo');
     }
 }
