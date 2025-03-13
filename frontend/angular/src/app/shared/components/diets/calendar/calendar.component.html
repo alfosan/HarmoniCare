@@ -1,0 +1,40 @@
+<div class="calendar">
+  <h1>Calendario Semanal de Dietas</h1>
+  <div class="week">
+    <div class="timeline">
+      <div class="time-slots">
+        <div class="time-slot">8:00 - Desayuno</div>
+        <div class="time-slot">13:00 - Comida</div>
+        <div class="time-slot">17:00 - Merienda</div>
+        <div class="time-slot">21:00 - Cena</div>
+        <div class="time-slot">21:30 - Postre</div>
+      </div>
+    </div>
+    <div class="days-grid">
+      <div class="day-column" *ngFor="let day of ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']">
+        <h2>{{ day }}</h2>
+        <div class="meal-slot" *ngFor="let mealType of ['desayuno', 'comida', 'merienda', 'cena', 'postre']">
+          <ng-container *ngIf="mealsByDay[day] && mealsByDay[day][mealType]; else addMealTemplate">
+            <div class="meal-content">
+              <div class="meal-image-container">
+                <img [src]="getMealImagePath(mealsByDay[day][mealType].img)" alt="{{ mealsByDay[day][mealType].name }}" class="meal-img">
+                <button class="remove-meal" (click)="removeMeal(day, mealType)">×</button>
+              </div>
+              <div class="meal-name">
+                {{ mealsByDay[day][mealType].name }}
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #addMealTemplate>
+            <div class="add-meal" (click)="addMeal(day, mealType)">
+              <i class="fas fa-plus-circle"></i>
+              <span>{{ mealType | titlecase }}</span>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-modal-meals *ngIf="showModal" [day]="selectedDay" [mealType]="selectedMealType" (close)="closeModal()" (mealSelected)="onMealSelected($event)"></app-modal-meals>
+</div>
