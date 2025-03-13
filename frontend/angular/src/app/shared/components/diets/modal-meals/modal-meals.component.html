@@ -1,0 +1,30 @@
+<div class="modal">
+  <div class="modal-content">
+    <header class="modal-header">
+      <h2 class="modal-title">{{ mealType | titlecase }} - {{ day }}</h2>
+      <button class="close-button" (click)="closeModal()">
+        <span class="material-icons">x</span>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <div class="meals-container">
+        <div class="meal-card" *ngFor="let meal of meals" (click)="selectMeal(meal)">
+          <div class="meal-image-container">
+            <img [src]="getMealImagePath(meal.img)" alt="{{ meal.name }}" class="meal-image">
+          </div>
+          <div class="meal-content">
+            <h3 class="meal-title">{{ meal.name }}</h3>
+            <p class="meal-description">{{ meal.description }}</p>
+            <div class="meal-details">
+              <span class="meal-calories">
+                <i class="material-icons">🔥</i>
+                {{ meal.calories }} cal
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

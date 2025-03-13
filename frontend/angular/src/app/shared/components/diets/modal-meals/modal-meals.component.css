@@ -1,0 +1,197 @@
+/* Modal base styles */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+/* Modal content container */
+.modal-content {
+  background-color: #ffffff;
+  width: 95%;
+  max-width: 1200px;
+  height: 90vh;
+  margin: 2rem auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: slideIn 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #edf2f7;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  color: #4a5568;
+}
+
+.close-button:hover {
+  background-color: #edf2f7;
+  transform: rotate(90deg);
+}
+
+/* Modal body */
+.modal-body {
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Meals container */
+.meals-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0.5rem;
+}
+
+/* Meal card styles */
+.meal-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  position: relative;
+}
+
+.meal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e0;
+}
+
+.meal-image-container {
+  position: relative;
+  padding-top: 70%;
+  overflow: hidden;
+}
+
+.meal-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.meal-card:hover .meal-image {
+  transform: scale(1.05);
+}
+
+.meal-content {
+  padding: 1.5rem;
+}
+
+.meal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.meal-description {
+  font-size: 1rem;
+  color: #4a5568;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.6;
+}
+
+.meal-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.meal-calories {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+.meal-type {
+  padding: 0.5rem 1rem;
+  background-color: #ebf4ff;
+  color: #3182ce;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.material-icons {
+  font-size: 1.4rem;
+}
+
+/* Custom scrollbar */
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
