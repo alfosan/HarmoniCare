@@ -7,7 +7,7 @@ import { DietsComponent } from '../../shared/components/diets/diets/diets.compon
   imports: [
     CommonModule,
     DietsRoutingModule,
-    DietsComponent // Importar el componente en lugar de declararlo
+    DietsComponent
   ]
 })
 export class DietsModule { }

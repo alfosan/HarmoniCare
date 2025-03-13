@@ -12,5 +12,8 @@ export const API_ROUTES = {
         LIST_BY_USER: (userId: number) => `${environment.apiUrl}/users/patient/?id_user=${userId}`,
         CREATE: `${environment.apiUrl}/users/patient/`,
         UPDATE: (patientId: number) => `${environment.apiUrl}/users/patient/${patientId}/`,
+    },
+    FOOD: {
+        MEALS: `${environment.apiUrl}/food/meals/`
     }
 };
