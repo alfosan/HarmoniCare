@@ -7,7 +7,6 @@ import { UserService } from '../../../../core/services/auth/user.service';
 import { TokenService } from '../../../../core/services/token/token.service';
 import { CookieService } from '../../../../core/services/cookies/cookie.service';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,8 +14,6 @@ import { CookieService } from '../../../../core/services/cookies/cookie.service'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
-
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   showPassword = false;
@@ -56,8 +53,6 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.loginForm.value).subscribe({
         next: (response) => {
           if (response.status === 'success') {
-            // console.log(response);
-
             this.tokenService.setTokens(response.accessToken, response.refreshToken);
             this.tokenService.setUserInfo(response.user);
             this.cookieService.setCookies(
@@ -65,7 +60,7 @@ export class LoginComponent implements OnInit {
               response.refreshToken, 
               response.user
             );
-            
+
             Swal.fire({
               icon: 'success',
               title: '¡Bienvenido a VitalNest!',
@@ -87,12 +82,11 @@ export class LoginComponent implements OnInit {
               timerProgressBar: true
             }).then(() => {
               window.location.href = 'http://localhost:3000/home';
-              // this.router.navigate(['/dashboard']);
             });
           }
         },
         error: (error) => {
-            Swal.fire({
+          Swal.fire({
             icon: 'error',
             title: '¡Ups! Algo salió mal',
             text: error.error.message || 'Las credenciales no son correctas',
@@ -113,7 +107,7 @@ export class LoginComponent implements OnInit {
             allowOutsideClick: false,
             timer: 3000,
             timerProgressBar: true
-            });
+          });
         }
       });
     }
