@@ -192,15 +192,6 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
 /* Add these styles to your existing CSS */
 .navLink.active {
     color: #2c3e50;
@@ -225,8 +216,6 @@
         background-color: #f8f9fa;
     }
 }
-
-
 
 .profile-container {
     position: relative;
@@ -328,7 +317,6 @@
     cursor: pointer;
 }
 
-
 .profile-link i {
     font-size: 1.1rem;
 }
@@ -345,6 +333,7 @@
         transform: translateX(-50%) translateY(0);
     }
 }
+
 .profile-icon {
     width: 40px;
     height: 40px;
@@ -361,4 +350,16 @@
     width: 50px;
     height: 50px;
     font-size: 1.8rem;
+}
+
+/* Estilos para el enlace de dietas */
+.navItem[routerLink="/diets"] .navLink {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    letter-spacing: 0.3px;
 }

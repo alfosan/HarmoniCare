@@ -1,85 +1,85 @@
 <header class="header">
     <div class="container">
-        <div class="logo">
-            <a [href]="routes.NEXT.HOME">
-                <img src="/Logo_VitalNest.png" alt="VitalNest Logo" />
-            </a>
-        </div>
-        <button class="hamburger" (click)="toggleMenu()" aria-label="Toggle menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <nav class="nav" [class.navOpen]="menuOpen">
-            <ul class="navList">
-                <li class="navItem">
-                    <a [href]="routes.NEXT.HOME" class="navLink" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Página Principal</a>
-                </li>
-                <li class="navItem">
-                    <a [href]="routes.NEXT.SHOP + '?activity_type=1'" class="navLink" routerLinkActive="active">Actividades</a>
-                </li>
-                <li class="navItem">
-                    <a [href]="routes.NEXT.MEALS + '?type_meal=1'" class="navLink" routerLinkActive="active">Menús</a>
-                </li>
-
-                <!-- 🔹 NUEVA OPCIÓN PARA PAGOS -->
-                <li class="navItem">
-                    <a [routerLink]="'/payments'" class="navLink" routerLinkActive="active">Pagos</a>
-                </li>
-
-                <li class="navItem" *ngIf="!tokenService.isAuthenticated()">
-                    <a [routerLink]="routes.ANGULAR.AUTH.LOGIN" class="navLink auth-button">Login</a>
-                </li>
-                <li class="navItem profile-container" *ngIf="tokenService.isAuthenticated()">
-                    <div class="profile-trigger" (click)="toggleProfileMenu()">
-                        <ng-container *ngIf="user?.profile_img; else defaultIcon">
-                            <img [src]="user.profile_img" alt="Profile" class="profile-image"/>
-                        </ng-container>
-                        <ng-template #defaultIcon>
-                            <i class="fas fa-user profile-icon"></i>
-                        </ng-template>
-                    </div>
-                    <div class="profile-dropdown" [class.show]="profileMenuOpen">
-                        <div class="profile-header">
-                            <ng-container *ngIf="user?.profile_img; else dropdownDefaultIcon">
-                                <img [src]="user.profile_img" alt="Profile" class="dropdown-profile-image"/>
-                            </ng-container>
-                            <ng-template #dropdownDefaultIcon>
-                                <i class="fas fa-user profile-icon"></i>
-                            </ng-template>
-                            <div class="profile-info">
-                                <p class="profile-name">{{user.name}}</p>
-                                <p class="profile-email">{{user.email}}</p>
-                            </div>
-                        </div>
-                        <div class="profile-menu">
-                            <a [routerLink]="routes.ANGULAR.AUTH.PROFILE" class="profile-link">
-                                <i class="fas fa-user"></i> Mi Perfil
-                            </a>
-                            <a [routerLink]="routes.ANGULAR.AUTH.FAMILY" class="profile-link">
-                                <i class="fas fa-users"></i> Mis Familiares
-                            </a>
-                            <a [routerLink]="routes.ANGULAR.AUTH.RESERVATIONS" class="profile-link">
-                                <i class="fas fa-calendar-alt"></i> Mis Reservas
-                            </a>
-                            <a [routerLink]="routes.ANGULAR.AUTH.PAYMENTS" class="profile-link">
-                                <i class="fas fa-credit-card"></i> Mis Pagos
-                            </a>
-                            <a (click)="logout()" class="profile-link logout">
-                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- 🔹 NUEVA OPCIÓN PARA NOTIFICACIONES -->
-                <li class="navItem" *ngIf="tokenService.isAuthenticated()">
-                    <div class="notifications-trigger" (click)="toggleNotifications()">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <app-notifications-list [isOpen]="notificationsOpen"></app-notifications-list>
-                </li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <a [href]="routes.NEXT.HOME">
+          <img src="/Logo_VitalNest.png" alt="VitalNest Logo" />
+        </a>
+      </div>
+      <button class="hamburger" (click)="toggleMenu()" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav class="nav" [class.navOpen]="menuOpen">
+        <ul class="navList">
+          <li class="navItem">
+            <a [href]="routes.NEXT.HOME" class="navLink" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Página Principal</a>
+          </li>
+          <li class="navItem">
+            <a [href]="routes.NEXT.SHOP + '?activity_type=1'" class="navLink" routerLinkActive="active">Actividades</a>
+          </li>
+          <li class="navItem">
+            <a [href]="routes.NEXT.MEALS + '?type_meal=1'" class="navLink" routerLinkActive="active">Menús</a>
+          </li>
+  
+          <!-- 🔹 NUEVA OPCIÓN PARA DIETAS SOLO PARA ADMIN -->
+          <li class="navItem" *ngIf="user?.role === 'admin'">
+            <a [routerLink]="'/diets'" class="navLink" routerLinkActive="active">Dietas</a>
+          </li>
+  
+          <li class="navItem" *ngIf="!tokenService.isAuthenticated()">
+            <a [routerLink]="routes.ANGULAR.AUTH.LOGIN" class="navLink auth-button">Login</a>
+          </li>
+          <li class="navItem profile-container" *ngIf="tokenService.isAuthenticated()">
+            <div class="profile-trigger" (click)="toggleProfileMenu()">
+              <ng-container *ngIf="user?.profile_img; else defaultIcon">
+                <img [src]="user.profile_img" alt="Profile" class="profile-image"/>
+              </ng-container>
+              <ng-template #defaultIcon>
+                <i class="fas fa-user profile-icon"></i>
+              </ng-template>
+            </div>
+            <div class="profile-dropdown" [class.show]="profileMenuOpen">
+              <div class="profile-header">
+                <ng-container *ngIf="user?.profile_img; else dropdownDefaultIcon">
+                  <img [src]="user.profile_img" alt="Profile" class="dropdown-profile-image"/>
+                </ng-container>
+                <ng-template #dropdownDefaultIcon>
+                  <i class="fas fa-user profile-icon"></i>
+                </ng-template>
+                <div class="profile-info">
+                  <p class="profile-name">{{user.name}}</p>
+                  <p class="profile-email">{{user.email}}</p>
+                </div>
+              </div>
+              <div class="profile-menu">
+                <a [routerLink]="routes.ANGULAR.AUTH.PROFILE" class="profile-link">
+                  <i class="fas fa-user"></i> Mi Perfil
+                </a>
+                <a [routerLink]="routes.ANGULAR.AUTH.FAMILY" class="profile-link">
+                  <i class="fas fa-users"></i> Mis Familiares
+                </a>
+                <a [routerLink]="routes.ANGULAR.AUTH.RESERVATIONS" class="profile-link">
+                  <i class="fas fa-calendar-alt"></i> Mis Reservas
+                </a>
+                <a [routerLink]="routes.ANGULAR.AUTH.PAYMENTS" class="profile-link">
+                  <i class="fas fa-credit-card"></i> Mis Pagos
+                </a>
+                <a (click)="logout()" class="profile-link logout">
+                  <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+              </div>
+            </div>
+          </li>
+  
+          <!-- 🔹 NUEVA OPCIÓN PARA NOTIFICACIONES -->
+          <li class="navItem" *ngIf="tokenService.isAuthenticated()">
+            <div class="notifications-trigger" (click)="toggleNotifications()">
+              <i class="fas fa-bell"></i>
+            </div>
+            <app-notifications-list [isOpen]="notificationsOpen"></app-notifications-list>
+          </li>
+        </ul>
+      </nav>
     </div>
-</header>
+  </header>
