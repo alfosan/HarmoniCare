@@ -1,8 +1,10 @@
+// filepath: c:\Users\3eias\Documents\PROYECTS\HarmoniCare\frontend\angular\src\app\app.routes.ts
 import { Routes } from '@angular/router';
 import { ErrorComponent } from './shared/components/error/error.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
 import { NotificationsListComponent } from './shared/components/bell/notifications-list/notifications-list.component';
+import { DietDetailsComponent } from './shared/components/diets/diets/diets-details/diet-details.component';
 
 export const routes: Routes = [
   { 
@@ -33,6 +35,11 @@ export const routes: Routes = [
     path: 'diets',
     canActivate: [AuthGuard, adminGuard],
     loadChildren: () => import('./modules/diets/diets.module').then(m => m.DietsModule)
+  },
+  {
+    path: 'diets/:id',
+    canActivate: [AuthGuard, adminGuard],
+    component: DietDetailsComponent
   },
   { 
     path: '404', 
