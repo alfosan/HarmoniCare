@@ -1,173 +1,261 @@
-.calendar {
+/* Base Styles */
+.calendar-container {
   max-width: 100%;
-  margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
 }
 
-.calendar h1 {
+/* Header Section */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #3182ce;
+}
+
+.header h1 {
+  color: #2d3748;
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Nutrition Summary Section */
+.nutrition-summary {
+  margin-bottom: 30px;
+  padding: 25px;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.nutrition-summary h3 {
   color: #2d3748;
   margin-bottom: 25px;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 600;
-  text-align: center;
 }
 
-.week {
+.stats-cards {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.stat-card {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card i {
+  font-size: 28px;
+  color: #4299e1;
+  margin-bottom: 15px;
+}
+
+/* Calendar Section */
+.calendar-section {
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  padding: 25px;
 }
 
 .timeline {
-  padding-top: 60px;
+  margin-bottom: 30px;
+  background-color: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
 }
 
 .time-slots {
-  display: flex;
-  flex-direction: column;
-  gap: 45px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 15px 0;
 }
 
 .time-slot {
-  height: 80px;
   display: flex;
   align-items: center;
-  color: #718096;
-  font-weight: 500;
-  font-size: 0.9em;
+  gap: 12px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+.time-slot i {
+  font-size: 20px;
+  color: #4299e1;
+}
+
+/* Days Grid */
 .days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 12px;
+  gap: 20px;
+  overflow-x: auto;
 }
 
 .day-column {
-  background-color: #fafafa;
-  border-radius: 8px;
-  padding: 12px;
-  min-width: 140px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 600px;
 }
 
 .day-column h2 {
-  color: #4a5568;
-  font-size: 1.1em;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #f7fafc;
-  border-radius: 6px;
   text-align: center;
-  font-weight: 500;
+  margin-bottom: 25px;
+  color: #2d3748;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
 }
 
-.meal-slot {
-  height: 100px;
-  margin-bottom: 35px;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 10px;
+/* Meal Cards */
+.meal-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  height: 250px;
+  transition: transform 0.3s ease;
 }
 
-.meal-slot:hover {
-  border-color: #63b3ed;
-  background-color: #f0f9ff;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.08);
-}
-
-.meal-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 6px;
+.meal-card:hover {
+  transform: translateY(-5px);
 }
 
 .meal-image-container {
   position: relative;
-  margin-bottom: 6px;
+  height: 150px;
 }
 
 .meal-img {
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.meal-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meal-info {
+  padding: 15px;
 }
 
 .meal-name {
-  color: #4a5568;
-  font-size: 0.85em;
-  font-weight: 400;
-  text-align: center;
-  margin-top: 4px;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 1em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2d3748;
 }
 
-.remove-meal {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #fc8181;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
+.meal-macros {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #4a5568;
+}
+
+.meal-macros span {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 5px;
+}
+
+/* Add Meal Card */
+.add-meal-card {
+  background-color: #f8fafc;
+  border: 2px dashed #cbd5e0;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.remove-meal:hover {
-  background-color: #f56565;
-  transform: scale(1.05);
-}
-
-.add-meal {
+  transition: all 0.3s ease;
+  height: 250px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
+  align-items: center;
+}
+
+.add-meal-card:hover {
+  background-color: #edf2f7;
+  border-color: #4299e1;
+}
+
+.add-meal-card i {
+  font-size: 32px;
+  color: #4299e1;
+  margin-bottom: 12px;
+}
+
+/* Charts Section */
+.nutrition-charts-section {
+  margin-top: 40px;
+  padding: 25px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 15px;
+}
+
+.pie-chart, .line-chart {
+  background-color: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+  min-height: 250px;
+  max-height: 300px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   width: 100%;
   height: 100%;
-  gap: 8px;
-}
-
-.add-meal i {
-  color: #63b3ed;
-  font-size: 1.2em;
-  transition: all 0.2s ease;
-}
-
-.add-meal span {
-  color: #718096;
-  font-size: 0.9em;
-  font-weight: 400;
-  text-align: center;
-}
-
-.add-meal:hover i {
-  transform: scale(1.1);
-  color: #4299e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
