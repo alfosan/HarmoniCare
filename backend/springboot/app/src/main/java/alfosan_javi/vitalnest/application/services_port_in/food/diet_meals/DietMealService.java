@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface DietMealService {
     List<DietMealDTO> getAllDietMeals();
     Optional<DietMealDTO> getDietMealById(Long id);
+    List<DietMealDTO> getDietMealsByDietId(Long dietId);
     DietMealDTO createDietMeal(DietMealDTO dietMealDTO);
     DietMealDTO updateDietMeal(Long id, DietMealDTO dietMealDTO);
     void deleteDietMeal(Long id);

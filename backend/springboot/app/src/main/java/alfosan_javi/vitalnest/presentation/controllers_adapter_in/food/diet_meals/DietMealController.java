@@ -1,3 +1,4 @@
+// filepath: c:\Users\3eias\Documents\PROYECTS\HarmoniCare\backend\springboot\app\src\main\java\alfosan_javi\vitalnest\presentation\controllers_adapter_in\food\diet_meals\DietMealController.java
 package alfosan_javi.vitalnest.presentation.controllers_adapter_in.food.diet_meals;
 
 import alfosan_javi.vitalnest.application.dto.food.diet_meals.DietMealDTO;
@@ -27,10 +28,19 @@ public class DietMealController {
         return dietMealService.getDietMealById(id);
     }
 
+    @GetMapping("/diet={dietId}")
+    public List<DietMealDTO> getDietMealsByDietId(@PathVariable Long dietId) {
+        return dietMealService.getDietMealsByDietId(dietId);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<DietMealDTO> createDietMeal(@RequestBody DietMealDTO dietMealDTO) {
-        DietMealDTO createdDietMeal = dietMealService.createDietMeal(dietMealDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdDietMeal);
+        try {
+            DietMealDTO createdDietMeal = dietMealService.createDietMeal(dietMealDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdDietMeal);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PutMapping("/update/{id}")

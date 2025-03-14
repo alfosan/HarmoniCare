@@ -35,6 +35,13 @@ public class DietMealServiceImpl implements DietMealService {
     }
 
     @Override
+    public List<DietMealDTO> getDietMealsByDietId(Long dietId) {
+        return dietMealRepository.findByDietId(dietId).stream()
+                .map(dietMealAssembler::toModel)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public DietMealDTO createDietMeal(DietMealDTO dietMealDTO) {
         DietMeal dietMeal = dietMealAssembler.toEntity(dietMealDTO);
         dietMeal.setCreatedAt(java.time.LocalDateTime.now());
