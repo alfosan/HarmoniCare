@@ -1,39 +1,49 @@
-<!-- filepath: c:\Users\3eias\Documents\PROYECTS\HarmoniCare\frontend\angular\src\app\shared\components\diets\diet-dashboard\diet-dashboard.component.html -->
 <div class="diet-dashboard container">
+  <!-- Header Section -->
   <header class="dashboard-header">
-    <h1 class="text-primary mb-4">Gestión de Dietas</h1>
-    <button class="btn btn-success create-diet-btn" (click)="createDiet()">
+    <h1 class="text-primary">Gestión de Dietas</h1>
+    <button class="btn btn-success create-diet-btn" (click)="openModal()">
       <i class="fas fa-plus-circle"></i> Nueva Dieta
     </button>
   </header>
 
-  <div class="diet-cards-container">
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let diet of diets">
-        <div class="card diet-card">
-          <div class="card-header">
-            <h3 class="card-title">{{ diet.nameDiet }}</h3>
-            <span class="health-badge" [ngClass]="{'excellent': diet.healthyScale > 7, 'good': diet.healthyScale <= 7 && diet.healthyScale > 5, 'regular': diet.healthyScale <= 5}">
-              Nivel Saludable: {{ diet.healthyScale }}/10
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="diet-info">
-              <p class="calories"><i class="fas fa-fire"></i> {{ diet.calories }} calorías</p>
+  <!-- Diet Cards Section -->
+  <section class="diet-cards-container">
+    <div *ngIf="diets.length > 0; else noDietsTemplate">
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let diet of diets">
+          <article class="card diet-card">
+            <!-- Card Header -->
+            <header class="card-header">
+              <h3 class="card-title">{{ diet.nameDiet }}</h3>
+              <span class="health-badge" 
+                    [ngClass]="{
+                      'excellent': diet.healthyScale > 7, 
+                      'good': diet.healthyScale <= 7 && diet.healthyScale > 5, 
+                      'regular': diet.healthyScale <= 5
+                    }">
+                Nivel Saludable: {{ diet.healthyScale }}/10
+              </span>
+            </header>
+
+            <!-- Card Body -->
+            <div class="card-body">
+              <p class="calories">
+                <i class="fas fa-fire"></i> {{ diet.calories }} calorías
+              </p>
+              <section class="allergens-section">
+                <h4>Descripción:</h4>
+                <ul>
+                  <li *ngFor="let allergen of diet.allergens">
+                    {{ allergen }}
+                  </li>
+                </ul>
+              </section>
               <p class="description">{{ diet.description }}</p>
-              <div class="allergens-section">
-                <h4>Alérgenos:</h4>
-                <div class="allergen-tags">
-                  <span class="allergen-tag" [ngClass]="{'active': diet.allergens?.includes('Gluten')}">
-                    <i class="fas fa-wheat"></i> Gluten
-                  </span>
-                  <span class="allergen-tag" [ngClass]="{'active': diet.allergens?.includes('Lactosa')}">
-                    <i class="fas fa-cheese"></i> Lactosa
-                  </span>
-                </div>
-              </div>
             </div>
-            <div class="card-actions">
+
+            <!-- Card Footer -->
+            <footer class="card-footer">
               <button class="btn btn-primary btn-sm" (click)="editDiet(diet.id)">
                 <i class="fas fa-edit"></i> Editar
               </button>
@@ -43,14 +53,24 @@
               <span class="status-badge" [ngClass]="{'active': diet.isActive}">
                 {{ diet.isActive ? 'Activa' : 'Inactiva' }}
               </span>
-            </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Creada: {{ diet.createdAt | date:'dd/MM/yyyy HH:mm' }}</small>
-            <small class="text-muted">Última actualización: {{ diet.updatedAt | date:'dd/MM/yyyy HH:mm' }}</small>
-          </div>
+            </footer>
+          </article>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- No Diets Template -->
+    <ng-template #noDietsTemplate>
+      <div class="no-diets">
+        <p>No hay dietas disponibles. Haz clic en "Nueva Dieta" para crear una.</p>
+      </div>
+    </ng-template>
+  </section>
+
+  <!-- Create Diet Modal -->
+  <app-create-diet-modal
+    *ngIf="showModal"
+    (close)="closeModal()"
+    (create)="createDiet($event)">
+  </app-create-diet-modal>
 </div>

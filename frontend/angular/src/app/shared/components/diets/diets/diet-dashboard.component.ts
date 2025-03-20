@@ -1,18 +1,19 @@
-// filepath: c:\Users\3eias\Documents\PROYECTS\HarmoniCare\frontend\angular\src\app\shared\components\diets\diet-dashboard\diet-dashboard.component.ts
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DietService } from '../../../../core/services/diets/diet.service';
 import { Router } from '@angular/router';
+import { CreateDietModalComponent } from '../create-diet-modal/create-diet-modal.component';
 
 @Component({
   selector: 'app-diet-dashboard',
   templateUrl: './diet-dashboard.component.html',
   styleUrls: ['./diet-dashboard.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, CreateDietModalComponent]
 })
 export class DietDashboardComponent implements OnInit {
   diets: any[] = [];
+  showModal = false; // Controla la visibilidad del modal
   @Output() dietSelected = new EventEmitter<number>();
 
   constructor(private dietService: DietService, private router: Router) {}
@@ -27,23 +28,25 @@ export class DietDashboardComponent implements OnInit {
     });
   }
 
-  createDiet(): void {
-    const diet = {
-      nameDiet: 'Nueva Dieta',
-      allergens: '{"Gluten": true, "Lactosa": false}',
-      isActive: true,
-      healthyScale: 8,
-      calories: 1500,
-      description: 'Descripción de la nueva dieta.'
-    };
+  openModal(): void {
+    this.showModal = true;
+  }
 
+  closeModal(): void {
+    this.showModal = false;
+  }
+
+  createDiet(diet: any): void {
     this.dietService.createDiet(diet).subscribe(() => {
       this.loadDiets();
+      this.closeModal();
     });
   }
 
   deleteDiet(dietId: number): void {
-    // Implementar la lógica para eliminar una dieta
+    this.dietService.deleteDiet(dietId).subscribe(() => {
+      this.loadDiets();
+    });
   }
 
   editDiet(dietId: number): void {

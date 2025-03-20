@@ -301,8 +301,12 @@
                         necesitas añadir familiares a tu cuenta.
                     </p>
                     <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                        <i class="fas fa-plus mr-2"></i>
+                        <a (click)="registerPatient()" 
+                        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                        style="cursor: pointer; max-width: 170px;">
+                        <i class="fas fa-plus"></i>
                         Añadir Familiar
+                    </a>
                     </button>
                 </div>
             </div>
