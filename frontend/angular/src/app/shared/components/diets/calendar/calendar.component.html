@@ -1,4 +1,3 @@
-<!-- filepath: c:\Users\3eias\Documents\PROYECTS\HarmoniCare\frontend\angular\src\app\shared\components\diets\calendar\calendar.component.html -->
 <div class="calendar-container">
   <!-- Header Section -->
   <div class="header">
@@ -14,26 +13,34 @@
     <div class="stats-cards">
       <div class="stat-card">
         <i class="fas fa-fire"></i>
-        <span>{{ totalCalories }} kcal</span>
+        <span> {{ totalCalories }} kcal</span>
         <p>Calorías Totales</p>
       </div>
       <div class="stat-card">
         <i class="fas fa-drumstick-bite"></i>
-        <span>{{ totalProtein }} g</span>
+        <span> {{ totalProtein }} g</span>
         <p>Proteínas</p>
       </div>
       <div class="stat-card">
         <i class="fas fa-bread-slice"></i>
-        <span>{{ totalCarbs }} g</span>
+        <span> {{ totalCarbs }} g</span>
         <p>Carbohidratos</p>
       </div>
       <div class="stat-card">
         <i class="fas fa-oil-can"></i>
-        <span>{{ totalFat }} g</span>
+        <span> {{ totalFat }} g</span>
         <p>Grasas</p>
       </div>
     </div>
   </div>
+
+  <div class="allergens-summary">
+    <h3>Alérgenos Encontrados</h3>
+    <ul>
+      <li *ngFor="let allergen of commonAllergens">{{ allergen }}</li>
+    </ul>
+  </div>
+  
 
   <!-- Calendar Section -->
   <div class="calendar-section">
@@ -83,7 +90,7 @@
                   <span><i class="fas fa-drumstick-bite"></i> {{ mealsByDay[day][mealType].proteins }} g</span>
                   <span><i class="fas fa-bread-slice"></i> {{ mealsByDay[day][mealType].carbohydrates }} g</span>
                   <span><i class="fas fa-oil-can"></i> {{ mealsByDay[day][mealType].fats }} g</span>
-                </div>
+                </div>            
               </div>
             </div>
           </ng-container>

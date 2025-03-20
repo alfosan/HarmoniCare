@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ModalMealsComponent } from '../modal-meals/modal-meals.component';
 import { AddDietMealsService } from '../../../../core/services/add_diets_meals/add-diet-meals.service';
 import { Router } from '@angular/router';
-import { ChartData, ChartOptions } from 'chart.js';
+import { ChartData } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 
 @Component({
@@ -20,6 +20,7 @@ export class CalendarComponent implements OnInit {
   selectedMealType!: string;
   showModal = false;
   mealsByDay: { [key: string]: { [key: string]: any } } = {};
+  commonAllergens: string[] = [];
   
   // Nuevas propiedades para estadísticas
   totalCalories: number = 0;
@@ -57,30 +58,26 @@ export class CalendarComponent implements OnInit {
           this.mealsByDay[day][dietMeal.mealType] = { ...meal, dietMealId: dietMeal.id };
           this.updateNutritionStats();
           this.updateCharts();
+          this.updateCommonAllergens();
         });
       });
     });
   }
 
   updateNutritionStats(): void {
-    let sumCalories = 0;
-    let sumProtein = 0;
-    let sumCarbs = 0;
-    let sumFat = 0;
+    this.totalCalories = 0;
+    this.totalProtein = 0;
+    this.totalCarbs = 0;
+    this.totalFat = 0;
 
     Object.values(this.mealsByDay).forEach(dayMeals => {
       Object.values(dayMeals).forEach((meal: any) => {
-        sumCalories += Number(meal.calories) || 0;
-        sumProtein += Number(meal.proteins) || 0;
-        sumCarbs += Number(meal.carbohydrates) || 0;
-        sumFat += Number(meal.fats) || 0;
+        this.totalCalories += Number(meal.calories) || 0;
+        this.totalProtein += Number(meal.proteins) || 0;
+        this.totalCarbs += Number(meal.carbohydrates) || 0;
+        this.totalFat += Number(meal.fats) || 0;
       });
     });
-
-    this.totalCalories = sumCalories;
-    this.totalProtein = sumProtein;
-    this.totalCarbs = sumCarbs;
-    this.totalFat = sumFat;
   }
 
   updateCharts(): void {
@@ -92,6 +89,25 @@ export class CalendarComponent implements OnInit {
       Object.values(meals).reduce((acc: number, meal: any) => acc + (Number(meal.calories) || 0), 0)
     );
   }
+
+  updateCommonAllergens(): void {
+    const allAllergensSet = new Set<string>();
+  
+    Object.values(this.mealsByDay).forEach(dayMeals => {
+      Object.values(dayMeals).forEach((meal: any) => {
+        if (meal.allergens) {
+          Object.keys(meal.allergens).forEach((allergen) => {
+            if (meal.allergens[allergen]) {
+              allAllergensSet.add(allergen);
+            }
+          });
+        }
+      });
+    });
+  
+    this.commonAllergens = Array.from(allAllergensSet);
+  }
+  
 
   addMeal(day: string, mealType: string): void {
     this.selectedDay = day;
@@ -120,6 +136,7 @@ export class CalendarComponent implements OnInit {
     this.addDietMealsService.createDietMeal(dietMeal).subscribe(() => {
       this.updateNutritionStats();
       this.updateCharts();
+      this.updateCommonAllergens();
     });
   }
 
@@ -130,10 +147,33 @@ export class CalendarComponent implements OnInit {
         delete this.mealsByDay[day][mealType];
         this.updateNutritionStats();
         this.updateCharts();
+        this.updateCommonAllergens();
       });
     }
   }
+  
+  updateAllAllergens(): void {
+    const allAllergensSet = new Set<string>();
+  
+    Object.values(this.mealsByDay).forEach(dayMeals => {
+      Object.values(dayMeals).forEach((meal: any) => {
+        if (meal.allergens) {
+          Object.keys(meal.allergens).forEach((allergen) => {
+            if (meal.allergens[allergen]) {
+              allAllergensSet.add(allergen);
+            }
+          });
+        }
+      });
+    });
+  
+    this.commonAllergens = Array.from(allAllergensSet);
+  }
 
+  getAllergensList(allergens: { [key: string]: boolean }): string[] {
+    return Object.keys(allergens).filter(key => allergens[key]);
+  }
+  
   getMealImagePath(img: string): string {
     return `assets/meals/specific/${img}`;
   }
