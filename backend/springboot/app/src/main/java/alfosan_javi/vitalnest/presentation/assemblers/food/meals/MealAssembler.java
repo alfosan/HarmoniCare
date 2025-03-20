@@ -8,7 +8,16 @@ import org.springframework.stereotype.Component;
 public class MealAssembler {
 
     public MealDTO toModel(Meal meal) {
-        return new MealDTO(meal.getId(), meal.getImg(), meal.getName(), meal.getCalories(), meal.getCarbohydrates(), meal.getProteins(), meal.getFats());
+        return new MealDTO(
+            meal.getId(),
+            meal.getImg(),
+            meal.getName(),
+            meal.getCalories(),
+            meal.getCarbohydrates(),
+            meal.getProteins(),
+            meal.getFats(),
+            meal.getAllergens()
+        );
     }
 
     public Meal toEntity(MealDTO mealDTO) {
@@ -20,6 +29,7 @@ public class MealAssembler {
         meal.setCarbohydrates(mealDTO.getCarbohydrates());
         meal.setProteins(mealDTO.getProteins());
         meal.setFats(mealDTO.getFats());
+        meal.setAllergens(mealDTO.getAllergens());
         return meal;
     }
 }
