@@ -3,7 +3,7 @@
 # 🏥 HarmoniCare ✨  
 ### Tu solución digital para la gestión integral de la nutrición y el cuidado - Proyecto TFG 2ºDAW  
 
-![VitalNest Banner](https://github.com/alfosan/HarmoniCare/Banner-HarmoniCare.png)
+![Harmoni Care Banner](https://github.com/alfosan/HarmoniCare/blob/main/Banner-HarminiCare.png)
 
 [![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-brightgreen)]()
 [![Licencia](https://img.shields.io/badge/Licencia-MIT-blue)]()
