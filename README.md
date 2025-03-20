@@ -1,9 +1,9 @@
 <div align="center">
 
-# 🏡 VitalNest ✨
-### Tu hogar digital para la gestión integral de residencias - La revolución en el cuidado
+# 🏥 HarmoniCare ✨  
+### Tu solución digital para la gestión integral de la nutrición y el cuidado - Proyecto TFG 2ºDAW  
 
-![VitalNest Banner](https://via.placeholder.com/1200x300?text=Welcome+to+VitalNest)
+![VitalNest Banner](https://github.com/alfosan/HarmoniCare/Banner-HarmoniCare.png)
 
 [![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-brightgreen)]()
 [![Licencia](https://img.shields.io/badge/Licencia-MIT-blue)]()
@@ -15,73 +15,73 @@
 
 ---
 
-<p align="center">
-  <a href="#-características">Características</a> •
-  <a href="#-instalación">Instalación</a> •
-  <a href="#-arquitectura">Arquitectura</a> •
-  <a href="#-vistas">Vistas</a> •
-  <a href="#-equipo">Equipo</a>
-</p>
+<p align="center">  
+  <a href="#-características">Características</a> •  
+  <a href="#-instalación">Instalación</a> •  
+  <a href="#-arquitectura">Arquitectura</a> •  
+  <a href="#-vistas">Vistas</a> •  
+  <a href="#-equipo">Equipo</a>  
+</p>  
 
-</div>
+</div>  
 
-## 🌟 Bienvenidos a VitalNest
+## 🌟 Bienvenidos a HarmoniCare  
 
-> *"Transformando la gestión de residencias en una experiencia extraordinaria"*
+> *"Transformando la nutrición y el cuidado en una experiencia personalizada y eficiente"*  
 
-VitalNest es más que una plataforma - es un ecosistema digital diseñado para revolucionar la forma en que gestionamos las residencias. Combinamos tecnología de vanguardia con un enfoque centrado en el ser humano para crear espacios más felices y eficientes. 🎯
+HarmoniCare es un proyecto desarrollado como parte de mi Trabajo de Fin de Grado (TFG) en 2ºDAW. Este sistema está diseñado para optimizar la gestión nutricional y el cuidado de pacientes, combinando tecnología avanzada con un enfoque centrado en la salud y el bienestar. 🎯  
 
-## ✨ Características Principales
+## ✨ Características Principales  
 
-<table>
-<tr>
-<td width="50%">
+<table>  
+<tr>  
+<td width="50%">  
 
-### 🎨 Gestión de Actividades
-- 📅 Calendario interactivo de eventos
-- 🎯 Sistema de inscripción inteligente
-- ⏰ Recordatorios automáticos
-- 🤝 Actividades grupales e individuales
-- 📊 Seguimiento de participación
+### 🎨 Gestión de Actividades  
+- 📅 Calendario interactivo de eventos  
+- 🎯 Sistema de inscripción inteligente  
+- ⏰ Recordatorios automáticos  
+- 🤝 Actividades grupales e individuales  
+- 📊 Seguimiento de participación  
 
-</td>
-<td width="50%">
+</td>  
+<td width="50%">  
 
-### 🍏 Control de Dietas
-- 🥗 Planificación personalizada
-- 📈 Seguimiento nutricional
-- ⚠️ Alertas de alergias
-- 🍎 Menús semanales
-- 📱 App para cocina
+### 🍏 Gestión Nutricional  
+- 🥗 Planificación personalizada de dietas  
+- 📈 Seguimiento de objetivos nutricionales  
+- ⚠️ Alertas de alergias y restricciones  
+- 🍎 Menús semanales adaptados  
+- 📱 App para cocina y pacientes  
 
-</td>
-</tr>
+</td>  
+</tr>  
 
-<tr>
-<td width="50%">
+<tr>  
+<td width="50%">  
 
-### 💊 Gestión de Medicamentos
-- ⏰ Programación de dosis
-- 📋 Historial médico digital
-- 🔔 Notificaciones inteligentes
-- 💉 Control de inventario
-- 👩‍⚕️ Conexión con personal médico
+### 💊 Gestión de Medicamentos  
+- ⏰ Programación de dosis  
+- 📋 Historial médico digital  
+- 🔔 Notificaciones inteligentes  
+- 💉 Control de inventario  
+- 👩‍⚕️ Conexión con personal médico  
 
-</td>
-<td width="50%">
+</td>  
+<td width="50%">  
 
-### 📱 Sistema de Notificaciones
-- 📲 Notificaciones en app
-- 📱 WhatsApp integrado
-- 📧 Alertas por email
-- 🤖 Bot de Telegram
-- 🔄 Sincronización en tiempo real
+### 📱 Sistema de Notificaciones  
+- 📲 Notificaciones en app  
+- 📱 WhatsApp integrado  
+- 📧 Alertas por email  
+- 🤖 Bot de Telegram  
+- 🔄 Sincronización en tiempo real  
 
-</td>
-</tr>
-</table>
+</td>  
+</tr>  
+</table>  
 
-## 🚀 Arquitectura Tecnológica
+## 🚀 Arquitectura Tecnológica  
 
 <div align="center">
 
@@ -207,7 +207,7 @@ graph TB
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/yourusername/vitalnest.git
+git clone https://github.com/alfosan/HarmoniCare.git
 
 # Iniciar con Docker Compose
 docker-compose up -d
@@ -248,11 +248,11 @@ docker-compose up -d
 
 <div align="center">
 
-| <img src="https://github.com/2-DAW-PROJECTS/images_proyects/blob/master/image-removebg-preview%20(1).png" alt="Javier profile" width="230" height="150" /> | <img src="https://github.com/2-DAW-PROJECTS/images_proyects/blob/master/bobesponja.png" alt="Llorenç profile" width="150" height="150" /> |
-|:---:|:---:|
-| **Javier Tomás Tormo** | **Llorenç Alfonso Sanchis** |
-| ⚙️ Full Stack | ⚙️ Full Stack |
-| [![GitHub](https://img.shields.io/badge/GitHub-JavierTomasTormo-black?style=flat-square&logo=github)](https://github.com/JavierTomasTormo) | [![GitHub](https://img.shields.io/badge/GitHub-alfosan-black?style=flat-square&logo=github)](https://github.com/alfosan) |
+| <img src="https://github.com/2-DAW-PROJECTS/images_proyects/blob/master/bobesponja.png" alt="Llorenç profile" width="150" height="150" /> |
+|:---:|
+| **Llorenç Alfonso Sanchis** |
+| ⚙️ Full Stack |
+| [![GitHub](https://img.shields.io/badge/GitHub-alfosan-black?style=flat-square&logo=github)](https://github.com/alfosan) |
 
 </div>
 
@@ -274,20 +274,21 @@ docker-compose up -d
 
 ## 📝 Licencia
 
-<div align="center">
+<div align="center">  
 
-Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles  
 
----
+---  
 
-### 🌟 ¿Necesitas Ayuda?
+### 🌟 ¿Necesitas Ayuda?  
 
-[![Email](https://img.shields.io/badge/Email-support%40vitalnest.com-blue?style=for-the-badge&logo=mail.ru)](mailto:support@vitalnest.com)
-[![Twitter](https://img.shields.io/badge/Twitter-%40VitalNest-blue?style=for-the-badge&logo=twitter)](https://twitter.com/VitalNest)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289DA?style=for-the-badge&logo=discord)](https://discord.gg/vitalnest)
+[![Email](https://img.shields.io/badge/Email-support%40harmonicare.com-blue?style=for-the-badge&logo=mail.ru)](mailto:support@harmonicare.com)  
+[![Twitter](https://img.shields.io/badge/Twitter-%40HarmoniCare-blue?style=for-the-badge&logo=twitter)](https://twitter.com/HarmoniCare)  
+[![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289DA?style=for-the-badge&logo=discord)](https://discord.gg/harmonicare)  
 
-<p align="center">
-  <sub>Made with 💖 & ☕ by VitalNest Team</sub>
-</p>
+<p align="center">  
+  <sub>Made with 💖 & ☕ by HarmoniCare Team</sub>  
+</p>  
 
-</div>
+</div>  
+
