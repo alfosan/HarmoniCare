@@ -1,0 +1,94 @@
+<div class="modal" *ngIf="dietId !== null">
+    <div class="modal-content" [class.expanded]="selectedPatient">
+      <!-- Modal Header -->
+      <header class="modal-header">
+        <h2>👥 Asignar Paciente</h2>
+        <button class="close-button" (click)="closeModal()">×</button>
+      </header>
+  
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form>
+          <div class="form-group search-container">
+            <label for="patientSelect">🔍 Seleccionar Paciente</label>
+            <select id="patientSelect" [(ngModel)]="selectedPatientId" name="patientSelect" class="form-control custom-select" (change)="onSelectPatient()">
+              <option value="" disabled selected>Seleccione un paciente...</option>
+              <option *ngFor="let patient of patients" [value]="patient.id">
+                {{ patient.name_patient }}
+              </option>
+            </select>
+          </div>
+  
+          <div *ngIf="selectedPatient" class="patient-details-card">
+            <div class="patient-header">
+              <h4>📋 Detalles del Paciente</h4>
+              <span class="patient-id">ID: #{{ selectedPatient.id }}</span>
+            </div>
+  
+            <div class="info-grid">
+              <div class="info-item">
+                <i class="fas fa-user"></i>
+                <strong>Nombre:</strong>
+                <span>{{ selectedPatient.name_patient }}</span>
+              </div>
+  
+              <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <strong>Email:</strong>
+                <span>{{ selectedPatient.email }}</span>
+              </div>
+  
+              <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <strong>Teléfono:</strong>
+                <span>{{ selectedPatient.phone_number }}</span>
+              </div>
+  
+              <div class="info-item">
+                <i class="fas fa-birthday-cake"></i>
+                <strong>Fecha de Nacimiento:</strong>
+                <span>{{ selectedPatient.birthday }}</span>
+              </div>
+            </div>
+  
+            <div class="special-info-section">
+              <div class="info-card disability">
+                <h5>♿ Discapacidades</h5>
+                <p>{{ selectedPatient.discapacity || 'No registradas' }}</p>
+              </div>
+  
+              <div class="info-card allergies">
+                <h5>⚠️ Alérgenos</h5>
+                <div class="tag-container">
+                  <span class="danger-tag" *ngFor="let allergen of getProcessedAllergies()">
+                    {{ allergen }}
+                  </span>
+                  <span *ngIf="getProcessedAllergies().length === 0">No registrados</span>
+                </div>
+              </div>
+              
+              <div class="info-card difficulties">
+                <h5>📝 Dificultades</h5>
+                <div class="tag-container">
+                  <span class="danger-tag" *ngFor="let difficulty of getProcessedDifficulties()">
+                    {{ difficulty }}
+                  </span>
+                  <span *ngIf="getProcessedDifficulties().length === 0">No registradas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Modal Footer -->
+      <footer class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">
+          <i class="fas fa-times"></i> Cancelar
+        </button>
+        <button class="btn btn-primary" [disabled]="!selectedPatient" (click)="assignPatient()">
+          <i class="fas fa-check"></i> Asignar
+        </button>
+      </footer>
+    </div>
+  </div>
