@@ -62,6 +62,19 @@ public class DietServiceImpl implements DietService {
     }
 
     @Override
+    public DietDTO assignPatientToDiet(Long dietId, Long patientId) {
+        Optional<Diet> existingDiet = dietRepository.findById(dietId);
+        if (existingDiet.isPresent()) {
+            Diet diet = existingDiet.get();
+            diet.setPatientId(patientId); // Asignar el paciente
+            diet.setUpdatedAt(java.time.LocalDateTime.now());
+            Diet updatedDiet = dietRepository.save(diet);
+            return dietAssembler.toModel(updatedDiet);
+        }
+        throw new RuntimeException("Diet not found with ID: " + dietId);
+    }
+
+    @Override
     public void deleteDiet(Long id) {
         dietRepository.deleteById(id);
     }

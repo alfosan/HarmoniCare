@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
+import java.util.Map;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,13 @@ public class DietController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
+    }
+
+    @PutMapping("/{dietId}/assign-patient")
+    public ResponseEntity<DietDTO> assignPatientToDiet(@PathVariable Long dietId, @RequestBody Map<String, Long> payload) {
+        Long patientId = payload.get("patientId");
+        DietDTO updatedDiet = dietService.assignPatientToDiet(dietId, patientId);
+        return ResponseEntity.ok(updatedDiet);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -11,4 +11,6 @@ public interface DietService {
     DietDTO createDiet(DietDTO dietDTO);
     DietDTO updateDiet(Long id, DietDTO dietDTO);
     void deleteDiet(Long id);
+
+    DietDTO assignPatientToDiet(Long dietId, Long patientId);
 }
