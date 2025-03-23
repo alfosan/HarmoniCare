@@ -17,7 +17,8 @@ public class DietAssembler {
             diet.getCalories(),
             diet.getDescription(),
             diet.getCreatedAt(),
-            diet.getUpdatedAt()
+            diet.getUpdatedAt(),
+            diet.getPatientId()
         );
     }
 
@@ -32,6 +33,7 @@ public class DietAssembler {
         diet.setDescription(dietDTO.getDescription());
         diet.setCreatedAt(dietDTO.getCreatedAt());
         diet.setUpdatedAt(dietDTO.getUpdatedAt());
+        diet.setPatientId(dietDTO.getPatientId());
         return diet;
     }
 }

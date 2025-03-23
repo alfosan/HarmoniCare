@@ -36,4 +36,7 @@ public class Diet {
 
     @Column(name = "updatedat")
     private LocalDateTime updatedAt;
+
+    @Column(name = "patient_id")
+    private Long patientId;
 }

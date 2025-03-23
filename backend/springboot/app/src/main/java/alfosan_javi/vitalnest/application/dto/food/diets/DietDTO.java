@@ -20,6 +20,7 @@ public class DietDTO {
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Long patientId;
 
     public DietDTO(Diet diet) {
         this.id = diet.getId();
@@ -31,5 +32,6 @@ public class DietDTO {
         this.description = diet.getDescription();
         this.createdAt = diet.getCreatedAt();
         this.updatedAt = diet.getUpdatedAt();
+        this.patientId = diet.getPatientId();
     }
 }
