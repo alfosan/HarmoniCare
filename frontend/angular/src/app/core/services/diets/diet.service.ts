@@ -25,4 +25,10 @@ export class DietService {
   getMealsByDietId(dietId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/diet-meals/diet=${dietId}`);
   }
+
+  updateDietWithPatient(dietId: number, patientId: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/diets/${dietId}/assign-patient`, { patientId });
+  }
+  
+
 }

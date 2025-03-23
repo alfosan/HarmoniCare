@@ -30,4 +30,14 @@ export class NotificationService {
   deleteNotification(notificationId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${notificationId}`, { headers: this.getAuthHeaders() });
   }
+
+  createNotification(title: string, concept: string, userId: number): Observable<any> {
+    const notification = {
+      title,
+      concept,
+      idUser: userId // Asegúrate de que el campo coincida con el backend
+    };
+  
+    return this.http.post<any>(`${this.apiUrl}/create`, notification, { headers: this.getAuthHeaders() });
+  }
 }
