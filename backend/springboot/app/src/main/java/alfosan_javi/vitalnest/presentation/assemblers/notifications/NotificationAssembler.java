@@ -6,30 +6,29 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NotificationAssembler {
-
-    public NotificationDTO toModel(Notification notification) {
-        return new NotificationDTO(
-            notification.getId(),
-            notification.getIdUser(),
-            notification.getIsRead(),
-            notification.getIsActive(),
-            notification.getTitle(),
-            notification.getConcept(),
-            notification.getIdPayment(),
-            notification.getIdActivity()
-        );
+    public Notification toEntity(NotificationDTO dto) {
+        Notification notification = new Notification();
+        notification.setId(dto.getId());
+        notification.setIdUser(dto.getIdUser());
+        notification.setIsRead(dto.getIsRead() != null ? dto.getIsRead() : false); // Valor predeterminado
+        notification.setIsActive(dto.getIsActive() != null ? dto.getIsActive() : true); // Valor predeterminado
+        notification.setTitle(dto.getTitle());
+        notification.setConcept(dto.getConcept());
+        notification.setIdPayment(dto.getIdPayment());
+        notification.setIdActivity(dto.getIdActivity());
+        return notification;
     }
 
-    public Notification toEntity(NotificationDTO notificationDTO) {
-        Notification notification = new Notification();
-        notification.setId(notificationDTO.getId());
-        notification.setIdUser(notificationDTO.getIdUser());
-        notification.setIsRead(notificationDTO.getIsRead());
-        notification.setIsActive(notificationDTO.getIsActive());
-        notification.setTitle(notificationDTO.getTitle());
-        notification.setConcept(notificationDTO.getConcept());
-        notification.setIdPayment(notificationDTO.getIdPayment());
-        notification.setIdActivity(notificationDTO.getIdActivity());
-        return notification;
+    public NotificationDTO toModel(Notification entity) {
+        return new NotificationDTO(
+            entity.getId(),
+            entity.getIdUser(),
+            entity.getIsRead(),
+            entity.getIsActive(),
+            entity.getTitle(),
+            entity.getConcept(),
+            entity.getIdPayment(),
+            entity.getIdActivity()
+        );
     }
 }

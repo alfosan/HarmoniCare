@@ -37,21 +37,23 @@ public class NotificationController {
             // Eliminar el prefijo 'Bearer ' y cualquier espacio innecesario
             String cleanedToken = token.replace("Bearer ", "").trim();
 
-            // Obtén el ID del usuario desde el token JWT
-            Long userId = jwtUtils.getUserIdFromJwtToken(cleanedToken);
+            // Si no se especifica el idUser en el cuerpo, extraerlo del token JWT
+            if (notificationDTO.getIdUser() == null) {
+                Long userId = jwtUtils.getUserIdFromJwtToken(cleanedToken);
 
-            // Si el token no tiene el ID, arroja un error
-            if (userId == null) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+                // Si el token no tiene el ID, arroja un error
+                if (userId == null) {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+                }
+
+                notificationDTO.setIdUser(userId);
             }
-
-            // Establecer el idUser en el DTO
-            notificationDTO.setIdUser(userId);
 
             // Crear la notificación
             NotificationDTO createdNotification = notificationService.createNotification(notificationDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdNotification);
         } catch (Exception e) {
+            e.printStackTrace(); // Log para depuración
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }

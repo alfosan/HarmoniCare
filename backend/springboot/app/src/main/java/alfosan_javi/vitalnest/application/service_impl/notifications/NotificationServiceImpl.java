@@ -36,6 +36,16 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public NotificationDTO createNotification(NotificationDTO notificationDTO) {
+        // Establecer un valor predeterminado para isRead si no se proporciona
+        if (notificationDTO.getIsRead() == null) {
+            notificationDTO.setIsRead(false);
+        }
+
+        // Establecer un valor predeterminado para isActive si no se proporciona
+        if (notificationDTO.getIsActive() == null) {
+            notificationDTO.setIsActive(true);
+        }
+
         Notification notification = notificationAssembler.toEntity(notificationDTO);
         Notification savedNotification = notificationRepository.save(notification);
         return notificationAssembler.toModel(savedNotification);
