@@ -46,7 +46,7 @@ export class DietDashboardComponent implements OnInit {
     this.userPatientService.getAllPatients().subscribe(
       (patients) => {
         this.patients = patients;
-        console.log('Pacientes cargados:', this.patients); // Verifica que los pacientes se carguen correctamente
+        console.log('Pacientes cargados:', this.patients);
       },
       (error) => {
         console.error('Error al cargar los pacientes:', error);
@@ -71,11 +71,6 @@ export class DietDashboardComponent implements OnInit {
   }
 
   openAssignModal(dietId: number): void {
-    const diet = this.diets.find((d) => d.id === dietId);
-    if (diet && diet.patientId) {
-      console.log(`La dieta ya está asignada al paciente con ID ${diet.patientId}`);
-      return;
-    }
     this.selectedDietId = dietId;
     this.showAssignModal = true;
   }
@@ -86,31 +81,27 @@ export class DietDashboardComponent implements OnInit {
   }
 
   assignPatientToDiet(event: { dietId: number; patientId: number }): void {
-    console.log('Asignando paciente con ID:', event.patientId); // Verifica el ID del paciente
-    console.log('Lista de pacientes:', this.patients); // Verifica la lista de pacientes
+    console.log('Asignando paciente con ID:', event.patientId);
+    console.log('Lista de pacientes:', this.patients);
   
-    // Asegúrate de que ambos valores sean del mismo tipo
-    const patient = this.patients.find((p) => p.id === +event.patientId); // Forzar a número si es necesario
+    const patient = this.patients.find((p) => p.id === +event.patientId);
     if (!patient) {
       console.error('Paciente no encontrado');
       return;
     }
   
-    // Asignar la dieta al paciente
     this.dietService.updateDietWithPatient(event.dietId, event.patientId).subscribe(
       (response) => {
         console.log(`Paciente ${event.patientId} asignado a la dieta ${event.dietId}`);
         console.log('Respuesta del backend:', response);
-        this.loadDiets(); // Recargar las dietas para reflejar los cambios
+        this.loadDiets();
       },
       (error: any) => {
         console.error('Error al asignar la dieta', error);
       }
     );
 
-    // Comentamos la lógica de notificaciones por ahora
-
-    const tutorId = patient.id_user; // Asegúrate de que el modelo `UserPatient` tenga el campo `id_user`
+    const tutorId = patient.id_user;
     const patientName = patient.name_patient;
   
     if (tutorId === undefined || tutorId === null) {
@@ -118,7 +109,6 @@ export class DietDashboardComponent implements OnInit {
       return;
     }
   
-    // Crear la notificación para el tutor
     this.notificationService.createNotification(
       'Nueva dieta asignada',
       `Se ha asignado una nueva dieta al paciente ${patientName}.`,
@@ -131,7 +121,6 @@ export class DietDashboardComponent implements OnInit {
         console.error('Error al enviar la notificación', error);
       }
     );
-  
   }
 
   createDiet(diet: any): void {

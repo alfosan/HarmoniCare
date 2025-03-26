@@ -1,3 +1,4 @@
+<br>
 <div class="diet-dashboard container">
   <!-- Header Section -->
   <header class="dashboard-header">
@@ -45,16 +46,14 @@
               <button class="btn btn-danger btn-sm" (click)="deleteDiet(diet.id)">
                 <i class="fas fa-trash"></i> Eliminar
               </button>
-              <ng-container *ngIf="!diet.patientId; else assignedPatient">
+              <div>
                 <button class="btn btn-info btn-sm" (click)="openAssignModal(diet.id)">
-                  <i class="fas fa-user-plus"></i> Asignar Paciente
+                  <i class="fas fa-user-plus"></i> {{ diet.patientId ? 'Reasignar Paciente' : 'Asignar Paciente' }}
                 </button>
-              </ng-container>
-              <ng-template #assignedPatient>
-                <span class="assigned-patient">
+                <span class="assigned-patient" *ngIf="diet.patientId">
                   <i class="fas fa-user"></i> Asignado a: {{ getPatientName(diet.patientId) }}
                 </span>
-              </ng-template>
+              </div>
               <span class="status-badge" [ngClass]="{'active': diet.isActive}">
                 {{ diet.isActive ? 'Activa' : 'Inactiva' }}
               </span>
