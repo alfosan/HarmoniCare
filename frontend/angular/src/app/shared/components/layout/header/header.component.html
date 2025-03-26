@@ -76,6 +76,8 @@
           <li class="navItem" *ngIf="tokenService.isAuthenticated()">
             <div class="notifications-trigger" (click)="toggleNotifications()">
               <i class="fas fa-bell"></i>
+              <!-- Puntito rojo si hay notificaciones sin leer -->
+              <span class="notification-dot" *ngIf="hasUnreadNotifications"></span>
             </div>
             <app-notifications-list [isOpen]="notificationsOpen"></app-notifications-list>
           </li>

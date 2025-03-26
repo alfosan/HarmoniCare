@@ -404,3 +404,18 @@
         border-radius: 6px;
         background: linear-gradient(to right, rgba(44, 62, 80, 0.05), transparent);
     }
+
+    .notifications-trigger {
+        position: relative;
+      }
+      
+      .notification-dot {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
