@@ -9,19 +9,19 @@ import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MatDialogModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

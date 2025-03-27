@@ -1,15 +1,76 @@
-<br><br><br><br>
-<div class="mb-8">
-    <app-profile-tabs [activeTab]="activeTab" (tabChange)="setActiveTab($event)"></app-profile-tabs>
-  </div>
-  
-  <div *ngIf="activeTab === 'payments'">
-    <h2>Mis Pagos</h2>
-    <ul>
-      <li *ngFor="let payment of payments">
-        <p>Monto: {{ payment.amount }}</p>
-        <p>Fecha: {{ payment.date | date }}</p>
-        <p>Estado: {{ payment.status }}</p>
-      </li>
-    </ul>
-  </div>
+<br><br><br><br><br>
+<div class="payments-container">
+  <mat-card class="payments-card">
+    <mat-card-header>
+      <mat-card-title>
+        <span class="title-icon">💳</span>
+        Mis Pagos
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span class="subtitle-icon">📊</span>
+        Historial de pagos realizados
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 animated-table">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> <span class="header-icon">🔢</span> ID </th>
+            <td mat-cell *matCellDef="let payment"> {{ payment.id }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> <span class="header-icon">💰</span> Monto (€) </th>
+            <td mat-cell *matCellDef="let payment" class="price-cell"> {{ payment.price | currency: 'EUR' }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="paymentMethod">
+            <th mat-header-cell *matHeaderCellDef> <span class="header-icon">💳</span> Método de Pago </th>
+            <td mat-cell *matCellDef="let payment" class="method-cell"> {{ payment.paymentMethod }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef> <span class="header-icon">🔄</span> Estado </th>
+            <td mat-cell *matCellDef="let payment" [ngClass]="'state-' + payment.state.toLowerCase()"> 
+              <span class="status-dot"></span>
+              {{ payment.state }} 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="transactionReference">
+            <th mat-header-cell *matHeaderCellDef> <span class="header-icon">🔍</span> Referencia </th>
+            <td mat-cell *matCellDef="let payment" class="reference-cell"> {{ payment.transactionReference }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> <span class="header-icon">📅</span> Fecha </th>
+            <td mat-cell *matCellDef="let payment" class="date-cell"> {{ payment.createdAt | date: 'short' }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="data-row"></tr>
+        </table>
+
+        <mat-paginator class="custom-paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="chart-card">
+    <mat-card-header>
+      <mat-card-title>
+        <span class="title-icon">📈</span>
+        Análisis de Pagos
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span class="subtitle-icon">📊</span>
+        Visualización de tendencias
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="chart-wrapper">
+        <canvas id="paymentsChart" class="animated-chart"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
