@@ -9,4 +9,5 @@ public interface PaymentRepository {
     Optional<Payment> findById(Long id);
     Payment save(Payment payment);
     void deleteById(Long id);
+    List<Payment> findByIdUser(Long userId);
 }

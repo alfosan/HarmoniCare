@@ -39,4 +39,11 @@ public class PaymentController {
         String email = jwtUtils.getUserEmailFromToken(token);
         return paymentService.createPayment(paymentDTO, userId, email);
     }
+
+    @GetMapping("/user-payment")
+    public List<PaymentDTO> getPaymentsByUser(HttpServletRequest request) {
+        String token = jwtUtils.getJwtFromRequest(request);
+        Long userId = jwtUtils.getUserIdFromJwtToken(token);
+        return paymentService.getPaymentsByUserId(userId);
+    }
 }

@@ -33,4 +33,9 @@ public class PaymentRepositoryImpl implements PaymentRepository {
     public void deleteById(Long id) {
         jpaPaymentRepository.deleteById(id);
     }
+
+    @Override
+    public List<Payment> findByIdUser(Long userId) {
+        return jpaPaymentRepository.findByIdUser(userId); // Delegar la consulta al JpaPaymentRepository
+    }
 }

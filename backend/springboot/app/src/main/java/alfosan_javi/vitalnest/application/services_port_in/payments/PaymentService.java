@@ -9,4 +9,5 @@ public interface PaymentService {
     List<PaymentDTO> getAllPayments();
     Optional<PaymentDTO> getPaymentById(Long id);
     PaymentDTO createPayment(PaymentDTO paymentDTO, Long userId, String email);
+    List<PaymentDTO> getPaymentsByUserId(Long userId); // Nuevo método
 }

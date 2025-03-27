@@ -61,4 +61,11 @@ public class PaymentServiceImpl implements PaymentService {
         Payment savedPayment = paymentRepository.save(payment);
         return paymentAssembler.toModel(savedPayment);
     }
+
+    @Override
+    public List<PaymentDTO> getPaymentsByUserId(Long userId) {
+        return paymentRepository.findByIdUser(userId).stream()
+                .map(paymentAssembler::toModel)
+                .collect(Collectors.toList());
+    }
 }
