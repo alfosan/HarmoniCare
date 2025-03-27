@@ -1,11 +1,12 @@
 .header {
-  background: #f8f9fa;
-  padding: 0.5rem 0;
+  background: linear-gradient(to right, #f8f9fa, #ffffff);
+  padding: 0.8rem 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(44, 62, 80, 0.05);
 }
 
 .container {

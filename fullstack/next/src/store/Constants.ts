@@ -42,6 +42,7 @@ export interface UserData {
   phone_number: string;
   address: string;
   profile_img: string;
+  role: string[]; // Added role property
 }
 
 export const DEFAULT_USER: UserData = {
@@ -53,7 +54,8 @@ export const DEFAULT_USER: UserData = {
   updatedat: '',
   phone_number: '',
   address: '',
-  profile_img: ''
+  profile_img: '',
+  role: ['client'], // Added role property
 };
 
 export interface RoomData {
